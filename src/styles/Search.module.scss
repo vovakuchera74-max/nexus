@@ -1,0 +1,42 @@
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 480px; 
+
+ 
+  .iconWrapper {
+    position: absolute;
+    left: 16px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8b88a0; 
+    pointer-events: none; 
+  }
+
+
+  input {
+    width: 100%;
+    height: 44px;
+    padding: 8px 16px 8px 48px; 
+    background-color: #171522; 
+    border: 1px solid #28243d; 
+    border-radius: 12px; 
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s ease-in-out; 
+
+    /* Стиль для тексту-підказки */
+    &::placeholder {
+      color: #8b88a0; 
+    }
+    &:focus {
+      border-color: rgba(168, 85, 247, 0.6); 
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1); 
+      background-color: #1c192b; 
+    }
+  }
+}

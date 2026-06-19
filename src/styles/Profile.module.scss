@@ -1,0 +1,143 @@
+.CartBlock{
+    display: flex;
+    align-items: center ;
+    gap: 5px;
+    color: #C4B8F0;
+    height: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.08);
+       outline: 1px solid rgba(255, 255, 255, 0.15);
+       color: white;
+    }
+}
+.cartWrapper{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    animation: fadeIn 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.Overlay {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+
+
+}
+
+.CardPanel {
+  width: 360px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #13131F;
+  border-left:1px solid  rgba(168, 85, 247, 0.2);
+  animation: slideIn 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  
+
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid  rgba(168, 85, 247, 0.2);
+}
+.block{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+}
+.img{
+    color: rgb(168, 85, 247);
+}
+.CartTop{
+    font-size: 1.27rem;
+    font-weight: 500;
+}
+.Xbtn{
+    display: flex;
+    padding: 8px;
+    color: #C4B8F0;
+    background-color:  rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease , box-shadow 0.3s ease;
+    &:hover{
+        transform: scale(1.15);
+        color: white;
+        box-shadow: 0 0 10px #888888;
+    }
+}
+.main{
+
+}
+.futter{
+     border-top: 1px solid  rgba(168, 85, 247, 0.2);
+display: flex;
+flex-direction: column;
+margin-top: 10px;
+min-width: 100%;
+padding: 20px;
+}
+.word{
+    color: rgb(107, 104, 144);
+    font-size: 14px;
+}
+.totalPrice{
+color: rgb(240, 238, 255);
+font-size: 14px;
+}
+.price{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+.order{
+    display: flex;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 16px;
+    width: 100%;
+    background: linear-gradient(135deg, rgb(168, 85, 247), rgb(99, 102, 241));
+    align-items: center;
+    justify-content: center;
+    border: solid 1px rgba(168, 85, 247, 0.15);
+    &:hover{
+        box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 20px 0px;
+    }
+}
+.main{
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+    flex: 1;
+    flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+
+}
