@@ -1,0 +1,29 @@
+.main{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.content {
+  display: flex;
+  flex: 1;
+  gap: 24px;
+  padding: 20px;
+  max-width: 1400px;
+}
+.filterBlock{
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+}
+.ProductBlock{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.productsGrid{
+    display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
