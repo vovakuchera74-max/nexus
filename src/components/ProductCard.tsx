@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { ShoppingCart } from "lucide-react";
 import Stars from "./Stars";
 import NewOrSale from "./NewOrSale";
+import AddToCartButton from "./AddToCartButton";
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -43,10 +44,7 @@ export default function ProductCard({ product }: { product: Product }) {
     )}
   </div>
   <div className={s.btnBlock}>
-    <button className={s.addBtn}>
-    <ShoppingCart size={16} />
-    Add
-  </button>
+    <AddToCartButton product={product}></AddToCartButton>
   </div>
 </div>
     </div>

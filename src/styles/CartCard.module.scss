@@ -1,7 +1,7 @@
 .Card{
     display: flex;
     width: 343px;
-    max-height: 115px;
+    max-height: 155px;
     padding: 12px;
     background-color: rgb(13, 13, 26);
     border: 1px solid rgba(168, 85, 247, 0.1);
@@ -43,7 +43,7 @@
 }
 .info{
     display: flex;
-    margin-top: 8px;
+    margin-top: 20px;
     justify-content: space-between;
 
 }
