@@ -27,3 +27,18 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+.minifilter{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.many{
+    padding-left: 10px;
+    color: rgb(240, 238, 255);
+    font-weight: 600;
+    font-size: 14px;
+    span{
+        color: rgb(107, 104, 144);
+    }
+}

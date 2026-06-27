@@ -5,6 +5,7 @@ import { ShoppingCart } from "lucide-react";
 import Stars from "./Stars";
 import NewOrSale from "./NewOrSale";
 import AddToCartButton from "./AddToCartButton";
+import Fav from "./Fav";
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -14,8 +15,9 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className={s.ProductCard}>
       <div className={s.imgBlock}>
-        <div className={`${s.badgeBlock} ${inter.className}`}>
+        <div className={`${inter.className}`}>
           <NewOrSale isNew={product.is_new} isSele={product.discount_percent}></NewOrSale>
+          <Fav product={product} />
 
         </div>
         <img src={product.image_url} alt={product.name} />

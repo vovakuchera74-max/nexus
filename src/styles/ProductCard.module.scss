@@ -1,6 +1,7 @@
 .imgBlock {
   height: 320px;
   overflow: hidden;
+  position: relative;
 }
 .imgBlock img {
   width: 100%;
@@ -126,10 +127,4 @@
 .btnBlock{
   display: flex;
   align-items: center;
-}
-.badgeBlock{
-  display: flex;
-  position: absolute;
-  margin: 10px;
-  z-index: 10;
 }

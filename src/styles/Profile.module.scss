@@ -1,5 +1,6 @@
 .CartBlock{
     display: flex;
+    position: relative;
     align-items: center ;
     gap: 5px;
     color: #C4B8F0;
@@ -11,7 +12,7 @@
     &:hover{
         background-color: rgba(255, 255, 255, 0.08);
        outline: 1px solid rgba(255, 255, 255, 0.15);
-       color: white;
+       color: rgb(168, 85, 247);
     }
 }
 .cartWrapper{
@@ -142,4 +143,53 @@ font-weight: 700;
   gap: 12px;
   overflow-y: auto;
 
+}
+.emptyState{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.emptyimg{
+  display: flex;
+  color: rgb(107, 104, 144);
+  margin-bottom: 20px;
+}
+.emptyTitle{
+display: flex;
+color: rgb(196, 184, 240);
+font-weight: 600;
+font-size: 16px;
+}
+.emptyText{
+display: flex;
+color: rgb(107, 104, 144);
+
+font-size: 14px;
+}
+.link{
+  display: flex;
+  gap: 10px;
+}
+.textWrapper {
+  position: relative;
+  display: flex;
+}
+
+.badgge {
+  position: absolute;
+  top: -10px;
+  right: -13px;
+  background: rgb(168, 85, 247);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

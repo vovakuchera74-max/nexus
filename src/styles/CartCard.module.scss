@@ -78,3 +78,27 @@
     color: #E24B4A;
   }
 }
+
+
+
+
+
+
+.btnpls{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.Addbtn{
+  background: linear-gradient(135deg, rgb(168, 85, 247), rgb(99, 102, 241));
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  font-size: 10px;
+  padding: 4px 7px;
+  font-weight: 600;
+  cursor: pointer;
+}
