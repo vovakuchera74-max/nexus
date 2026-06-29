@@ -11,9 +11,9 @@ const inter = Inter({
   weight: ['400', '500'],
 });
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product, view }: { product: Product, view?: string }) {
   return (
-    <div className={s.ProductCard}>
+    <div className={`${s.ProductCard} ${view === 'list' ? s.listCard : ''}`}>
       <div className={s.imgBlock}>
         <div className={`${inter.className}`}>
           <NewOrSale isNew={product.is_new} isSele={product.discount_percent}></NewOrSale>

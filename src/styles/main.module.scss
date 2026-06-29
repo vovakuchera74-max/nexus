@@ -10,7 +10,9 @@
   flex: 1;
   gap: 24px;
   padding: 20px;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1300px;
+  
 }
 .filterBlock{
     display: flex;
@@ -21,6 +23,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    width: 100%;
 }
 .productsGrid{
     display: grid;
@@ -28,17 +31,31 @@
   gap: 20px;
 }
 .minifilter{
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
+
 }
 .many{
-    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
     color: rgb(240, 238, 255);
     font-weight: 600;
     font-size: 14px;
     span{
         color: rgb(107, 104, 144);
     }
+}
+.Blockfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.listGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
