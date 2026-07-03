@@ -142,6 +142,11 @@ font-weight: 700;
     flex-direction: column;
   gap: 12px;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
 }
 .emptyState{

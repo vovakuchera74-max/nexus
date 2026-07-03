@@ -1,0 +1,219 @@
+.filters{
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    padding: 15px;
+    margin-top: 15px;
+    background-color: rgb(18, 18, 30);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: 14px;
+    overflow-y: auto;
+    height: 700;
+    gap: 15px;
+    padding-right: 8px; 
+
+
+  scrollbar-width: thin;
+  scrollbar-color: #9d4edd #131129;
+
+ 
+  &::-webkit-scrollbar {
+    width: 6px; 
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #131129; 
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #8a2be2; 
+    border-radius: 10px; 
+  }
+
+}
+.logoFilter{
+    display: flex;
+    gap: 5px;
+
+    color: rgb(168, 85, 247);
+}
+.logoblockk{
+  display: flex;
+  justify-content: space-between;
+}
+.filterword{
+    display: flex;
+    color: rgb(240, 238, 255);
+    font-size: 14px;
+    font-weight: 700;
+}
+.Cat{
+color: rgb(107, 104, 144);
+font-size: 11px;
+font-weight: 700;
+margin-bottom: 10px;
+}
+.OptionsCat{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+.checkboxInput {
+  display: none;
+}
+.checkboxLabel{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.checkboxCustom {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.checkboxText{
+    display: flex;
+    color: rgb(196, 184, 240);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.checkboxInput:checked + .checkboxCustom {
+  background: rgba(168, 85, 247, 0.2);
+  border: 1px solid rgb(168, 85, 247);
+
+  &::after {
+    content: '';
+    width: 4px;
+    height: 8px;
+    border-right: 2px solid rgb(168, 85, 247);
+    border-bottom: 2px solid rgb(168, 85, 247);
+    transform: rotate(45deg) translate(-1px, -1px);
+    display: block;
+  }
+}
+.checkboxInput:checked ~ .checkboxText{
+    color: rgb(168, 85, 247);
+}
+.borde{
+    background-color: rgba(168, 85, 247, 0.1);
+    
+    padding: 1px;
+}
+.BrandFilter{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.CategoryFilter{
+    display: flex;
+    flex-direction: column;
+}
+.PriceFilter{
+    display: flex;
+    margin-top: 5px;
+    flex-direction: column;
+}
+.curentPrice{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+}
+.MaxPrice{
+display: flex;
+color: rgb(107, 104, 144);
+font-size: 11px;
+font-weight: 700;
+}
+.curentP{
+display: flex;
+color: rgb(168, 85, 247);
+font-size: 14px;
+font-weight: 700;
+}
+.Bar{
+    accent-color: rgb(168, 85, 247);
+    margin-bottom: 10px;
+}
+.PriceOptions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.minmaxvalue{
+    display: flex;
+    color: rgb(107, 104, 144);
+font-size: 14px;
+font-weight: 700;
+}
+.toggleInput {
+  display: none;
+}
+
+.toggleSwitch {
+  width: 36px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s ease;
+  }
+}
+
+.toggleInput:checked + .toggleSwitch {
+  background: rgb(168, 85, 247);
+
+  &::after {
+    transform: translateX(16px);
+  }
+}
+.toggleInput:checked ~ .toggleText {
+  color: rgb(168, 85, 247);
+
+}
+
+.toggleLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 6px;
+}
+
+.toggleText {
+  font-size: 14px;
+  color: rgb(196, 184, 240);
+  font-weight: 500;
+}
+.resetALL{
+  display: flex;
+  color: rgb(107, 104, 144);
+  font-size: 12px;
+  font-weight: 500;
+  border-bottom: rgba(168, 85, 247, 0.15) 1px solid;
+  cursor: pointer;
+}

@@ -5,17 +5,38 @@ import ProductCard from "@/components/ProductCard";
 import { Inter } from "next/font/google";
 import SortDropdown from "@/components/SortDropdown";
 import ViewToggle from "@/components/ViewToggle";
+import Sidebar from "@/components/Sidebar";
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
 });
 
-export default async function Home({searchParams}:{searchParams: Promise<{ sort?: string ; view: string ; search : string}>}) {
-  const { sort: sortParam , view , search} = await searchParams;
+export default async function Home({searchParams}:{searchParams: Promise<{ 
+  sort?: string; 
+  view?: string; 
+  search?: string;
+  category?: string;
+  brand?: string;
+  maxPrice?: string;
+  inStock?: string;
+}>})
+{
+  const { sort: sortParam, view, search, category, brand, maxPrice, inStock } = await searchParams;
   const sort = sortParam || 'featured';
   let query = supabase
   .from('products')
   .select('*, categories(name)');
+  if (category) {
+  const slugs = category.split(',');
+  const { data: cats } = await supabase
+    .from('categories')
+    .select('id')
+    .in('slug', slugs);
+  
+  if (cats) {
+    query = query.in('category_id', cats.map(c => c.id));
+  }
+}
 
 
   if (sort === 'price_asc') {
@@ -32,6 +53,15 @@ query = query.order("rating",{ ascending: false } )
 if (search) {
   query = query.ilike('name', `%${search}%`);
 }
+if (maxPrice) {
+  query = query.lte('price', Number(maxPrice))
+}
+if (inStock === 'true') {
+  query = query.gt('stock', 0)
+}
+if (brand) {
+  query = query.in('brand', brand.split(','))
+}
   const { data: products } = await query.returns<Product[]>();
   if (!products) return
 
@@ -43,7 +73,7 @@ if (search) {
 
       <div className={s.content}>
 
-        <div className={s.filterBlock}></div>
+          <Sidebar />
 
         <div className={s.ProductBlock}>
 
