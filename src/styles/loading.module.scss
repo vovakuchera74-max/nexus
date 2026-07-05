@@ -1,0 +1,76 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.sidebarSkeleton {
+  width: 230px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: rgb(18, 18, 30);
+  border-radius: 14px;
+}
+
+.gridSkeleton {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cardSkeleton {
+  background: rgb(18, 18, 30);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.cardImg {
+  height: 220px;
+}
+
+.cardLine {
+  height: 16px;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+.cardLineShort {
+  height: 16px;
+  width: 60%;
+  margin: 8px 12px;
+  border-radius: 4px;
+}
+
+// анімація пульсації
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.skeletonTitle, .skeletonLine, .cardImg, .cardLine, .cardLineShort {
+  background: rgba(168, 85, 247, 0.1);
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeletonTitle {
+  height: 20px;
+  width: 80px;
+  margin-bottom: 8px;
+}
+
+.skeletonLine {
+  height: 14px;
+}

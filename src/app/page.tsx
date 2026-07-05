@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import SortDropdown from "@/components/SortDropdown";
 import ViewToggle from "@/components/ViewToggle";
 import Sidebar from "@/components/Sidebar";
+import StorieRow from "@/components/StoriesRow";
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -63,13 +64,17 @@ if (brand) {
   query = query.in('brand', brand.split(','))
 }
   const { data: products } = await query.returns<Product[]>();
+  const { data: stories, error } = await supabase.from('stories').select('*');
+console.log('STORIES:', stories, 'ERROR:', error);
+if (!stories) return;
   if (!products) return
+  
 
   return (
 
     <main className={s.main}>
 
-      <div className={s.storis}></div>
+      <StorieRow stories={stories}></StorieRow>
 
       <div className={s.content}>
 
