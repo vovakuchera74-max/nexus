@@ -79,3 +79,27 @@
   border-radius: 10px 10px 0 0;
   border-bottom: none;
 }
+@media(max-width:600px){
+  .SortValue{
+    font-size: 10px;
+    width: 90px;
+  }
+  .trigger{
+    padding: 4px 6px;
+    gap: 3px;
+  }
+  .sortlible{
+    width: 132px;
+  }
+  .option{
+    font-size: 10px;
+  }
+  .arrowicon{
+    width: 11px;
+    height: 11px;
+  }
+  .updown{
+    width: 11px;
+    height: 11px;
+  }
+}

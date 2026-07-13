@@ -15,6 +15,23 @@
        color: rgb(168, 85, 247);
     }
 }
+.CartBlock2{
+    display: flex;
+    position: relative;
+    align-items: center ;
+    gap: 5px;
+    color: #C4B8F0;
+    height: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.08);
+       outline: 1px solid rgba(255, 255, 255, 0.15);
+       color: rgb(168, 85, 247);
+    }
+}
 .cartWrapper{
     position: fixed;
     top: 0;
@@ -197,4 +214,153 @@ font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.Profile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px;
+  color: rgb(196, 184, 240);
+      border-radius: 12px;
+      cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    &:hover{
+        background-color: rgba(255, 255, 255, 0.08);
+       outline: 1px solid rgba(255, 255, 255, 0.15);
+       color: rgb(168, 85, 247);
+    }
+}
+.ProWords{
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+
+}
+.ProIcon{
+  display: flex;
+
+}
+.updown2{
+    display: flex;
+
+}
+.ProfileActiv{
+   display: flex;
+   position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px;
+  color: rgb(196, 184, 240);
+      border-radius: 12px;
+      cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.08);
+       color: rgb(168, 85, 247);
+       outline: rgba(168, 85, 247, 0.6) 1px solid; 
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1); 
+}
+.ProfileOptions{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    z-index: 12;
+    background-color: rgb(18, 18, 30);
+    border: rgba(168, 85, 247, 0.25) 1px solid;
+    color: rgb(196, 184, 240);
+    width: 222px;
+    border-radius: 10px;
+    top: 45px;
+    right: 0px;
+
+    transform-origin: top right; // бо випадає з-під кнопки Profile, яка справа
+    animation: dropdownAppear 0.18s ease-out;
+    cursor:default;
+}
+
+@keyframes dropdownAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.ProfileTop{
+  display: flex;
+  align-items: center;
+  padding: 12px 12px;
+  gap: 10px;
+  border-bottom: rgba(168, 85, 247, 0.15) 1px solid;
+}
+.Photo{
+  display: flex;
+  border-radius: 50%;
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+}
+.DataBlock{
+  display: flex;
+  flex-direction: column;
+}
+.ProfileNick{
+  display: flex;
+  margin-top: 3px;
+  color: rgb(240, 238, 255);
+  font-size: 16px;
+  font-weight: 600;
+
+}
+.ProfileEmail{
+    display: flex;
+  color: rgb(107, 104, 144);
+  font-size: 13px;
+}
+.Profilemain{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+   border-bottom: rgba(168, 85, 247, 0.15) 1px solid;
+}
+.ProOptions{
+  display: flex;
+  width:  100%;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 6px;
+  color: rgb(196, 184, 240);
+    &:hover {
+    background-color: rgba(168, 85, 247, 0.1);
+    color: rgb(168, 85, 247);
+  }
+}
+.Proname{
+  display: flex;
+  font-size: 14px;
+}
+@media(max-width:700px){
+  .CartBlock{
+    display: none;
+  }
+}
+@media(max-width:450px){
+  .CartBlock2{
+    display: none;
+  }
+}
+.Profilbottom{
+  display: flex;
+  padding: 12px 16px;
+  gap: 5px;
+  align-items: center;
+  color: rgb(239, 68, 68);
+  font-size: 14px;
+      &:hover {
+    background-color: rgba(30,30,48);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
 }

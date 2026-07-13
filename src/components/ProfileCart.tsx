@@ -1,12 +1,14 @@
 "use client"
 import s from "../styles/Profile.module.scss"
 import { useState } from "react"
-import { ShoppingCart, ChevronDown, X , Heart } from 'lucide-react';
+import { ShoppingCart, ChevronDown,ChevronUp, X ,Settings , Heart,LogOut  } from 'lucide-react';
 import CardCart from "./CartCard";
 import { useCartStore } from "@/store/CartStore";
 import { Inter } from "next/font/google";
 import { useWishListStore } from "@/store/wishlistStore";
 import WishCard from "./WishCard";
+import { UserRound } from 'lucide-react';
+
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -27,14 +29,52 @@ const getTotalCount = useCartStore((state)=>state.getTotalCount)
                    <span className={s.Cart}>WishList</span>
                       {wish.length > 0 && <span className={`${s.badgge} ${inter.className}`}>{wish.length}</span>}
                  </div></button>
-                 <button className={s.CartBlock} onClick={()=>setIsCartOpen(true)}><ShoppingCart size={20}></ShoppingCart>
+                 <button className={s.CartBlock2} onClick={()=>setIsCartOpen(true)}><ShoppingCart size={20}></ShoppingCart>
                  <div className={s.textWrapper}>
     <span className={s.Cart}>Cart</span>
     {getTotalCount() > 0 && <span className={`${s.badgge} ${inter.className}`}>{getTotalCount()}</span>}
   </div>
                  
                  </button>
-                <div className={s.Profile}></div>
+
+                <div className={isProfileOpen ?s.ProfileActiv :s.Profile } onClick={()=>setIsProfileOpen(!isProfileOpen)}>
+                  <div className={s.ProIcon}><UserRound size={20} /></div>
+                  <div className={s.ProWords}>Profile</div>
+                 <div className={s.arroww}>{isProfileOpen ? <ChevronUp size={14} className={s.updown2}/> : <ChevronDown size={14} className={s.updown2}/>}</div>
+
+                 {isProfileOpen && 
+                 <div className={ `${s.ProfileOptions} ${inter.className}`}>
+                  <div className={s.ProfileTop}>
+                    <div className={s.Photo}><img src="https://genshinbuild.com/images/Icons/Hu_Tao.png" alt="" /></div>
+                    <div className={s.DataBlock}>
+                      <div className={s.ProfileNick}>Dark</div>
+                      <div className={s.ProfileEmail}>Darkmail.gmail.org</div>
+                    </div>
+                  </div>
+                  <div className={s.Profilemain}>
+                    <div className={s.ProOptions}>
+                      <div className={s.ProIcon}><Heart size={16}></Heart></div>
+                      <div className={s.Proname}>WishList</div>
+                    </div>
+                    <div className={s.ProOptions}>
+                      <div className={s.ProIcon}><ShoppingCart size={16}></ShoppingCart></div>
+                      <div className={s.Proname}>Cart</div>
+                    </div>
+                    <div className={s.ProOptions}>
+                      <div className={s.ProIcon}><Settings size={16}></Settings></div>
+                      <div className={s.Proname}>Settings</div>
+                    </div>
+                  </div>
+                  <div className={s.Profilbottom}>
+                    <div className={s.SingOutIcon}><LogOut size={16}></LogOut> </div>
+                    <div className={s.SingOutWord}>Sing Out</div>
+                  </div>
+                 </div>
+                 
+                 }
+                </div>
+
+
           </div>
           {isCartOpen && 
           <div className={s.cartWrapper}>

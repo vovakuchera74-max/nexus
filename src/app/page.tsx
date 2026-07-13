@@ -4,9 +4,8 @@ import s from "../styles/main.module.scss"
 import ProductCard from "@/components/ProductCard";
 import { Inter } from "next/font/google";
 import SortDropdown from "@/components/SortDropdown";
-import ViewToggle from "@/components/ViewToggle";
 import Sidebar from "@/components/Sidebar";
-import StorieRow from "@/components/StoriesRow";
+import Dropfilter from "@/components/Dropfilter";
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -64,9 +63,6 @@ if (brand) {
   query = query.in('brand', brand.split(','))
 }
   const { data: products } = await query.returns<Product[]>();
-  const { data: stories, error } = await supabase.from('stories').select('*');
-console.log('STORIES:', stories, 'ERROR:', error);
-if (!stories) return;
   if (!products) return
   
 
@@ -74,11 +70,10 @@ if (!stories) return;
 
     <main className={s.main}>
 
-      <StorieRow stories={stories}></StorieRow>
 
       <div className={s.content}>
 
-          <Sidebar />
+          <Sidebar product={products.length} size={false}/>
 
         <div className={s.ProductBlock}>
 
@@ -86,11 +81,11 @@ if (!stories) return;
             <div className={s.many}>{products.length}   <span>products</span></div>
             <div className={s.Blockfil}>
               <SortDropdown></SortDropdown>
-              <ViewToggle></ViewToggle>
+              <Dropfilter product={products.length}></Dropfilter>
             </div>
           </div>
 
-         <div className={view === "list" ? s.listGrid : s.productsGrid}>
+         <div className={s.productsGrid}>
             {products.map((product) => (
               <ProductCard key={product.id} product={product} view={view} />
             ))}

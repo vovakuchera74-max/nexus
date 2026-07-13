@@ -1,10 +1,10 @@
 "use client"
 import { Inter } from "next/font/google";
 import s from "../styles/Sidebar.module.scss"
-import { SlidersHorizontal } from 'lucide-react';
+import { SlidersHorizontal ,X} from 'lucide-react';
 import { useState,useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
+import { useFilterPanelStore } from "@/store/FilterPanelStore";
 
 const categories = ['Consoles', 'Controllers', 'Peripherals', 'Keyboards', 'Headsets', 'Monitors', 'Laptops', 'Accessories'];
 const brands = ['Sony', 'Microsoft', 'Razer', 'Corsair', 'HyperX', 'Logitech', 'ASUS', 'MSI', 'SteelSeries', 'Elgato'];
@@ -12,7 +12,8 @@ const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
 });
-export default function Sidebar (){
+export default function Sidebar ({size ,product}:{size:boolean,product:number}){
+  const {close} = useFilterPanelStore();
 const searchParams = useSearchParams()
 const router = useRouter();
 const selectedCategories = searchParams.get('category')?.split(',').filter(Boolean) || [];
@@ -88,7 +89,13 @@ const resetFilters = () => {
 }
 
     return(
-        <div className={s.filters}>
+        <div className={size ?s.filtersblock :s.filters}>
+          {size &&
+           <div className={s.topFilter}>
+                    <div className={s.Howmanyreslts}>{product} <span>results</span></div>
+                    <button className={s.btnFilterclose} onClick={()=>close()}><X size={14}/></button>
+                </div>
+          }
             <div className={s.logoblockk}>
               <div className={s.logoFilter}>
                 <SlidersHorizontal size={18}></SlidersHorizontal>

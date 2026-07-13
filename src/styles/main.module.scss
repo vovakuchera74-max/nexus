@@ -47,10 +47,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
-.listGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+@media(max-width:1100px){
+    .productsGrid{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+@media(max-width:800px){
+    .productsGrid{
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+@media(max-width:600px){
+    .minifilter{
+        padding: 15px 5px;
+    }
+    .many{
+        font-size: 12px;
+        gap: 4px;
+    }
+    .content{
+        padding: 20px 5px;
+    }
 }

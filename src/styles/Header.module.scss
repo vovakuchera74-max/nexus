@@ -14,6 +14,7 @@
 .headerbox{
 display: flex;
 justify-content: space-around;
+gap: 10px;
 padding: 15px 20px;
 width: 100%;
 max-width: 1400px;
@@ -60,4 +61,21 @@ height: 100%;
 @keyframes shimmer {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
+}
+@media(max-width:800px){
+  .name{
+    font-size: 16px;
+  }
+  .log{
+    width: 20px;
+    height: 20px;
+  }
+  .headerbox{
+    padding: 15px 10px;
+  }
+}
+@media(max-width:600px){
+  .name{
+    font-size: 14px;
+  }
 }

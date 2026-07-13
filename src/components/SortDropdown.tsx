@@ -31,10 +31,10 @@ export default function SortDropdown(){
     return(
          <div className={s.SortDropdown}>
       <div onClick={() => setIsOpenSort(!isOpenSort)} className={`${s.trigger} ${isOpenSort ? s.triggerOpen : ''}`}>
-        <div className={s.Sorticon}><ArrowUpDown size={13} /></div>
+        <div className={s.Sorticon}><ArrowUpDown className={s.updown} size={13} /></div>
         <div className={s.SortValue}>{currentLabel}</div>
         <div className={s.arrowicon}>
-          {isOpenSort ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          {isOpenSort ? <ChevronUp size={14} className={s.updown}/> : <ChevronDown size={14} className={s.updown}/>}
         </div>
       </div>
 
