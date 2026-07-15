@@ -1,10 +1,145 @@
 .errorPage {
   position: fixed;
   inset: 0;
-  background: #0D0D14;
+  background-color: #07060b;
+  background-image: 
+    linear-gradient(rgba(168, 85, 247, 0.06) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(168, 85, 247, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999; // поверх всього включно з Header
+}
+.BlockError{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scanLine {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.6) 50%,
+    transparent 100%
+  );
+  pointer-events: none; // щоб не заважала кліками по контенту під нею
+  z-index: 0; // позаду всього контенту
+  animation: scanDown 6s linear infinite;
+}
+
+@keyframes scanDown {
+  from {
+    top: 0%;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+.glitch {
+ display: flex;
+  font-size: 120px;
+  color: rgb(168, 85, 247);
+  text-shadow: rgba(168, 85, 247, 0.4) 0px 0px 40px, rgba(168, 85, 247, 0.2) 0px 0px 80px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  animation: glitchColorShift 2.5s steps(1) infinite;
+}
+
+@keyframes glitchColorShift {
+  0%, 92%, 100% {
+    color: #a855f7;
+    text-shadow: none;
+  }
+  93%, 95% {
+    color: #22d3ee; // яскравий cyan/блакитний
+    text-shadow: 
+      -4px 4px 0 #ef4444, // червоний зсув знизу-зліва
+      4px -4px 0 #3b82f6; // синій зсув зверху-справа
+  }
+}
+.ServerWords{
+  display: flex;
+  color: rgb(240, 238, 255);
+  font-size: 19.6px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+.ReloadWords{
+  display: flex;
+  color: rgb(168, 85, 247);
+  font-size: 19.8px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+.Reloadbtn{
+  min-width: 130px;
+  display: flex;
+  color: rgb(255, 255, 255);
+  padding: 10px 14px;
+  border-radius: 16px;
+  gap: 5px;
+  background: linear-gradient(135deg, rgb(168, 85, 247), rgb(99, 102, 241));
+    align-items: center;
+    border: solid 1px rgba(168, 85, 247, 0.15);
+    transition: 0.2s opacity ease-in;
+    &:hover{
+        box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 20px 0px;
+        opacity: 0.9;
+    }
+    cursor: pointer;
+}
+.ReloadImg{
+  display: flex;
+  margin-left: 5px;
+}
+.ReloadWord{
+  display: flex;
+  font-weight: 700;
+  font-size: 20px;
+
+}
+.corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: rgba(168, 85, 247, 0.5); // фіолетовий, як на скріні
+  pointer-events: none; // щоб не заважали кліками по контенту під ними
+}
+
+.cornerTopLeft {
+  top: 24px;
+  left: 24px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.cornerTopRight {
+  top: 24px;
+  right: 24px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.cornerBottomLeft {
+  bottom: 24px;
+  left: 24px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+
+.cornerBottomRight {
+  bottom: 24px;
+  right: 24px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
 }

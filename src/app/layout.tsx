@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${rajdhani.variable} ${orbitron.variable}`}>
         <Header />
+        
         {children}
       </body>
     </html>

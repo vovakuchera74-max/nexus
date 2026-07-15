@@ -52,13 +52,13 @@ const getTotalCount = useCartStore((state)=>state.getTotalCount)
                     </div>
                   </div>
                   <div className={s.Profilemain}>
-                    <div className={s.ProOptions}>
+                    <div className={s.ProOptions} onClick={()=>setIsWishOpen(true)}>
                       <div className={s.ProIcon}><Heart size={16}></Heart></div>
                       <div className={s.Proname}>WishList</div>
                     </div>
-                    <div className={s.ProOptions}>
+                    <div className={s.ProOptions} onClick={()=>setIsCartOpen(true)}>
                       <div className={s.ProIcon}><ShoppingCart size={16}></ShoppingCart></div>
-                      <div className={s.Proname}>Cart</div>
+                      <div className={s.Proname}  >Cart</div>
                     </div>
                     <div className={s.ProOptions}>
                       <div className={s.ProIcon}><Settings size={16}></Settings></div>

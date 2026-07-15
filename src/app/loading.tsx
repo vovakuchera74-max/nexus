@@ -8,7 +8,7 @@ export default function Loading() {
         {/* Sidebar скелетон */}
         <div className={s.sidebarSkeleton}>
           <div className={s.skeletonTitle} />
-          {[...Array(8)].map((_, i) => (
+          {[...Array(25)].map((_, i) => (
             <div key={i} className={s.skeletonLine} />
           ))}
         </div>
@@ -18,8 +18,16 @@ export default function Loading() {
           {[...Array(6)].map((_, i) => (
             <div key={i} className={s.cardSkeleton}>
               <div className={s.cardImg} />
-              <div className={s.cardLine} />
-              <div className={s.cardLineShort} />
+              <div className={s.cardCategoryRow}>
+                <div className={s.cardBrandTag} />
+                <div className={s.cardCategoryName} />
+              </div>
+              <div className={s.cardTitle} />
+              <div className={s.cardRating} />
+              <div className={s.cardBuyRow}>
+                <div className={s.cardPrice} />
+                <div className={s.cardBtn} />
+              </div>
             </div>
           ))}
         </div>
