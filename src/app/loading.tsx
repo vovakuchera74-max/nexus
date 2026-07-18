@@ -1,8 +1,10 @@
 import s from "../styles/loading.module.scss"
-
+import Header from "@/components/Header"
 export default function Loading() {
   return (
-    <main className={s.main}>
+    <>
+    <Header></Header>
+     <main className={s.main}>
       <div className={s.content}>
         
         {/* Sidebar скелетон */}
@@ -34,5 +36,7 @@ export default function Loading() {
 
       </div>
     </main>
+    
+    </>
   )
 }

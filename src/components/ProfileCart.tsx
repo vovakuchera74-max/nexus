@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 import { useWishListStore } from "@/store/wishlistStore";
 import WishCard from "./WishCard";
 import { UserRound } from 'lucide-react';
+import Link from "next/link";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -67,7 +68,7 @@ const getTotalCount = useCartStore((state)=>state.getTotalCount)
                   </div>
                   <div className={s.Profilbottom}>
                     <div className={s.SingOutIcon}><LogOut size={16}></LogOut> </div>
-                    <div className={s.SingOutWord}>Sing Out</div>
+                    <Link href={"sign-up"} className={s.SingOutWord}>Sing Out</Link>
                   </div>
                  </div>
                  

@@ -1,0 +1,117 @@
+"use client"
+import s from "../../styles/SignUp.module.scss"
+import Link from "next/link"
+import { Gamepad2,User,Mail, Check} from "lucide-react"
+import { Inter } from "next/font/google";
+import { FiGithub } from "react-icons/fi";
+import { FaGoogle } from "react-icons/fa";
+import { IoLockClosedOutline } from "react-icons/io5";
+import { Eye } from 'lucide-react';
+import { EyeOff } from 'lucide-react';
+import { useState } from "react";
+import { ArrowRight } from 'lucide-react';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { signUp, signUpValue } from "../../validations/signUpSchema"
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+});
+
+export default function SignUp (){
+    const [EyeOpen,setEyeOpen] = useState(false);
+    const [EyeOpenRep,setEyeOpenRep] = useState(false);
+    const {
+  register,
+  handleSubmit,
+  formState: { errors, isSubmitting },
+} = useForm<signUpValue>({
+  mode: "onTouched",
+  resolver: zodResolver(signUp),
+})
+const onSubmit = (data:signUpValue) => {
+  console.log(data)
+}
+
+    return(
+        <div className={s.SingUpPage}>
+            <div className={`${s.corner} ${s.cornerTopLeft}`}></div>
+  <div className={`${s.corner} ${s.cornerTopRight}`}></div>
+  <div className={`${s.corner} ${s.cornerBottomLeft}`}></div>
+  <div className={`${s.corner} ${s.cornerBottomRight}`}></div>
+            <div className={s.SingUpBlock}>
+                    <Link href={"/"} className={s.SingUpLogo}>
+                          <div className={s.log}><Gamepad2 size={20}/></div>
+                          <div className={`${s.name} ${s.orbitron}`}>NEXUS <span className={s.gg}>GG</span></div>
+                     </Link>
+                <div className={s.SingUpWords}>Create Account</div>
+                <div className={`${s.SingUpLink} ${inter.className}`}>
+                    <div className={s.Already}>Already a member?</div>
+                    <Link href={"sign-in"} className={s.sign}>Sign in</Link>
+                </div>
+                <div className={`${s.SingUpСhoice} ${inter.className}`}>
+                    <div className={s.GitBlock}>
+                        <div className={s.GitImg}><FiGithub size={16}/></div>
+                        <div className={s.GitWords}>GitHub</div>
+                    </div>
+                    <div className={s.GoogleBlock}>
+                        <div className={s.GooglImg}><FaGoogle  size={16}/></div>
+                        <div className={s.GoogleWords}>Google</div>
+                    </div>
+                </div>
+                <div className={`${s.SingUpBorder} ${inter.className}`}>
+                    <div className={s.Line}></div>
+                    <div className={s.Words}>or with email</div>
+                    <div className={s.Line}></div>
+                </div>
+                <form onSubmit={handleSubmit(onSubmit)} className={`${s.SingUpBlockBottom} ${inter.className}`}>
+                    <div className={s.OptiBlock}>
+                        <div className={s.Optiname}>Username</div>
+                        <label className={errors.username ? s.OptiwritenError  :s.Optiwriten}>
+                            <User className={s.OptiImg} size={16}/>
+                            <input {...register("username")} className={s.OptiInput} type="text" placeholder="YourName"/>
+                        </label>
+                        {errors.username && <span className={s.errorText}>{errors.username.message}</span>}
+                    </div>
+                     <div className={s.OptiBlock}>
+                        <div className={s.Optiname}>Email</div>
+                        <label className={errors.email ? s.OptiwritenError  :s.Optiwriten}>
+                            <Mail className={s.OptiImg} size={16}/>
+                            <input {...register("email")} className={s.OptiInput} type="text" placeholder="User@nexusgg.com"/>
+                        </label>
+                        {errors.email && <span className={s.errorText}>{errors.email.message}</span>}
+                    </div>
+                    <div className={s.OptiBlock}>
+                        <div className={s.Optiname}>Password</div>
+                        <label className={errors.password ? s.OptiwritenError  :s.Optiwriten}>
+                            <IoLockClosedOutline className={s.OptiImg} size={16}/>
+                            <input {...register("password")} className={s.OptiInput} type={EyeOpen ?"text" :"password"} placeholder="Min. 8 characters"/>
+                            <button className={s.EyeRepet} type="button" onClick={()=>setEyeOpen(!EyeOpen)}>{EyeOpen ? <EyeOff size={17}/> : <Eye size={17}/> }</button>
+                        </label>
+                        {errors.password && <span className={s.errorText}>{errors.password.message}</span>}
+                    </div>
+                    <div className={s.OptiBlock}>
+                        <div className={s.Optiname}>Confirm Password</div>
+                        <label className={errors.confirmPassword ? s.OptiwritenError  :s.Optiwriten}>
+                            <IoLockClosedOutline className={s.OptiImg} size={16}/>
+                            <input {...register("confirmPassword")} className={s.OptiInput} type={EyeOpenRep ?"text" :"password"} placeholder="Repeat your password"/>
+                            <button className={s.EyeRepet } type="button" onClick={()=>setEyeOpenRep(!EyeOpenRep)}>{EyeOpenRep ? <EyeOff size={17}/> : <Eye size={17}/> }</button>
+                        </label>
+                        {errors.confirmPassword && <span className={s.errorText}>{errors.confirmPassword.message}</span>}
+                    </div>
+                    <label className={s.checkboxLabel}>
+       <input {...register("terms")} type="checkbox" className={s.checkboxInput} />
+        <span className={s.checkboxCustom}></span>
+        <span className={s.checkboxText}>I agree to the <span className={s.someText1}>Terms of Service</span>and<span className={s.someText2}>Privacy Policy</span></span>
+      </label>
+      {errors.terms && <span className={s.errorText}>{errors.terms.message}</span>}
+      <button  className={s.Regbtn}>
+        <div className={s.RegbtnText}>Create Account</div>
+        <div className={s.ArrowFor}><ArrowRight size={17}/></div>
+      </button>
+
+                </form>
+            </div>
+        </div>
+    )
+}

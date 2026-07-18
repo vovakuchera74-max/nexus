@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import SortDropdown from "@/components/SortDropdown";
 import Sidebar from "@/components/Sidebar";
 import Dropfilter from "@/components/Dropfilter";
+import Header from "@/components/Header";
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -67,6 +68,8 @@ if (brand) {
   
 
   return (
+    <>
+    <Header></Header>
 
     <main className={s.main}>
 
@@ -95,6 +98,8 @@ if (brand) {
       </div>
 
     </main>
+    </>
+    
 
   );
 }
