@@ -12,13 +12,25 @@ import { useState } from "react";
 import { ArrowRight } from 'lucide-react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { signIn, signInValue } from "../../validations/signInSchema"
+import { signIn, signInValue } from "../../validations/signInSchema";
+import { createClient } from "@/lib/supabase-browser"
+import { useRouter } from "next/navigation"
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
 });
 
 export default function SignUp (){
+const handleGitHub = async () => {
+  const supabase = createClient();
+  await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`
+    }
+  });
+}
+    const router = useRouter();
     const [EyeOpen,setEyeOpen] = useState(false);
     const {
       register,
@@ -28,8 +40,16 @@ export default function SignUp (){
       mode: "onTouched",
       resolver: zodResolver(signIn),
     })
-    const onSubmit = (data:signInValue) => {
-      console.log(data)
+    const onSubmit = async (data:signInValue) => {
+      const supabase = createClient();
+     const { error } = await supabase.auth.signInWithPassword({ 
+  email: data.email, 
+  password: data.password 
+})
+      if(error)return
+
+      router.push("/")
+
     }
 
     return(
@@ -49,7 +69,7 @@ export default function SignUp (){
                     <Link href={"sign-up"} className={s.sign}>Create one</Link>
                 </div>
                 <div className={`${s.SingUpСhoice} ${inter.className}`}>
-                    <div className={s.GitBlock}>
+                    <div className={s.GitBlock} onClick={handleGitHub}>
                         <div className={s.GitImg}><FiGithub size={16}/></div>
                         <div className={s.GitWords}>GitHub</div>
                     </div>
@@ -87,7 +107,7 @@ export default function SignUp (){
       </button>
 
                 </form>
-                <div className={`${s.ConfirmOpt} ${inter.className}`}>By signing in you agree to our <span className={s.someText1}>Terms</span> and <span className={s.someText2}>Privacy Policy</span>.</div>
+                <div className={`${s.ConfirmOpt} ${inter.className}`}>By signing in you agree to<span className={s.someText1}>Terms</span> and <span className={s.someText2}>Privacy Policy</span></div>
             </div>
         </div>
     )

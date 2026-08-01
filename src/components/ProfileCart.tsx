@@ -9,12 +9,24 @@ import { useWishListStore } from "@/store/wishlistStore";
 import WishCard from "./WishCard";
 import { UserRound } from 'lucide-react';
 import Link from "next/link";
+import { User } from '@supabase/supabase-js'
+import { createClient } from '@/lib/supabase-browser'
+import { useRouter } from 'next/navigation'
+import { Check } from 'lucide-react';
+import { Mail} from "lucide-react"
+import { IoLockClosedOutline } from "react-icons/io5";
+
 
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
 });
-export default function HeaderActions (){
+export default function HeaderActions({ user }: { user: User | null }) {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isNickFocused, setIsNickFocused] = useState(false);
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const router = useRouter();
 const [isCartOpen, setIsCartOpen] = useState(false);
 const [isWishOpen, setIsWishOpen] = useState(false);
 const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -22,6 +34,11 @@ const items = useCartStore((state)=>state.items)
 const wish = useWishListStore((state)=>state.Wish)
 const getTotalPrice = useCartStore((state)=>state.getTotalPrice)
 const getTotalCount = useCartStore((state)=>state.getTotalCount)
+const handleSignOut = async () => {
+  const supabase = createClient();
+  await supabase.auth.signOut();
+  router.refresh();
+}
     return(
          <>
          <div className={s.link}>
@@ -44,12 +61,13 @@ const getTotalCount = useCartStore((state)=>state.getTotalCount)
                  <div className={s.arroww}>{isProfileOpen ? <ChevronUp size={14} className={s.updown2}/> : <ChevronDown size={14} className={s.updown2}/>}</div>
 
                  {isProfileOpen && 
-                 <div className={ `${s.ProfileOptions} ${inter.className}`}>
+                 (user ? 
+                    <div className={ `${s.ProfileOptions} ${inter.className}`}>
                   <div className={s.ProfileTop}>
                     <div className={s.Photo}><img src="https://genshinbuild.com/images/Icons/Hu_Tao.png" alt="" /></div>
                     <div className={s.DataBlock}>
-                      <div className={s.ProfileNick}>Dark</div>
-                      <div className={s.ProfileEmail}>Darkmail.gmail.org</div>
+                      <div className={s.ProfileNick}>{user.user_metadata.username || user.user_metadata.user_name || user.email}</div>
+                      <div className={s.ProfileEmail}>{user.email}</div>
                     </div>
                   </div>
                   <div className={s.Profilemain}>
@@ -61,17 +79,40 @@ const getTotalCount = useCartStore((state)=>state.getTotalCount)
                       <div className={s.ProIcon}><ShoppingCart size={16}></ShoppingCart></div>
                       <div className={s.Proname}  >Cart</div>
                     </div>
-                    <div className={s.ProOptions}>
-                      <div className={s.ProIcon}><Settings size={16}></Settings></div>
+                    <div className={s.ProOptions} onClick={()=>setIsSettingsOpen(true)}>
+                      <div className={s.ProIcon} ><Settings size={16}></Settings></div>
                       <div className={s.Proname}>Settings</div>
                     </div>
                   </div>
-                  <div className={s.Profilbottom}>
+                  <div  onClick={handleSignOut} className={s.Profilbottom}>
                     <div className={s.SingOutIcon}><LogOut size={16}></LogOut> </div>
-                    <Link href={"sign-up"} className={s.SingOutWord}>Sing Out</Link>
+                    <Link href={"/"} className={s.SingOutWord}>Sing Out</Link>
                   </div>
                  </div>
-                 
+                 :
+                 <div className={ `${s.ProfileOptions} ${inter.className}`}>
+                  <div className={s.ProfileTop}>
+                    <div className={s.DataBlock}>
+                      <div className={s.ProfilHellow}>Welcome!</div>
+                      <div className={s.ProfileSomeText}>Log in to access your profile, wishlist.</div>
+                    </div>
+                  </div>
+                  <div className={s.Profilemain}>
+                    <div className={s.ProOptions} onClick={()=>setIsWishOpen(true)}>
+                      <div className={s.ProIcon}><Heart size={16}></Heart></div>
+                      <div className={s.Proname}>WishList</div>
+                    </div>
+                    <div className={s.ProOptions} onClick={()=>setIsCartOpen(true)}>
+                      <div className={s.ProIcon}><ShoppingCart size={16}></ShoppingCart></div>
+                      <div className={s.Proname}  >Cart</div>
+                    </div>
+                  </div>
+                  <div className={s.Profilbottom2}>
+                    <Link className={s.SignInBtn} href={"sign-up"}>Sign In</Link>
+                    <Link className={s.SignUpBtn} href={"sign-in"}>Create Account</Link>
+                  </div>
+                 </div>
+                 )  
                  }
                 </div>
 
@@ -150,6 +191,68 @@ const getTotalCount = useCartStore((state)=>state.getTotalCount)
             </div>
 
           </div> 
+          }
+          {isSettingsOpen &&
+          <div className={s.FullScrin}>
+            <div className={s.Overlay3} onClick={()=>setIsSettingsOpen(false)}></div>
+            <div className={ `${s.SettingsBlock} ${inter.className}`}>
+              <div className={s.CloseBlock}>
+                <div className={s.AccountSettings}>Account Settings</div>
+                <div className={s.Xbtn2} onClick={()=>setIsSettingsOpen(false)}><X size={20}></X></div>
+              </div>
+              <div className={s.Avatar}>
+                <img className={s.photoAvatar} src="https://genshinbuild.com/images/Icons/Hu_Tao.png" alt="" />
+                <div className={s.NickEmailBlock}>
+                  <div className={s.Nick}>Vova</div>
+                  <div className={s.Email}>Vovanlucjera@gmail.com</div>
+                </div>
+              </div>
+              <div className={s.NickWords}>
+        <UserRound size={18} className={s.OptiImg}></UserRound>        
+  <input
+    onFocus={() => setIsNickFocused(true)}
+    placeholder="Change nickname"
+    className={s.NickInput}
+  />
+  {isNickFocused && (
+    <>
+      <button ><Check size={20}></Check></button>
+      <button onClick={() => setIsNickFocused(false)}><X size={20}></X></button>
+    </>
+  )}
+</div>
+              <div className={s.NickWords2}>
+                 <Mail className={s.OptiImg} size={18}/>
+  <input
+    onFocus={() => setIsEmailFocused(true)}
+    placeholder="Change email"
+    className={s.NickInput}
+    type="email"
+  />
+  {isEmailFocused && (
+    <>
+      <button ><Check size={20}></Check></button>
+      <button onClick={() => setIsEmailFocused(false)}><X size={20}></X></button>
+    </>
+  )}
+</div>
+              <div className={s.NickWords2}>
+                 <IoLockClosedOutline className={s.OptiImg} size={18}/>
+  <input
+    onFocus={() => setIsPasswordFocused(true)}
+    placeholder="Change password"
+    className={s.NickInput}
+    type="password"
+  />
+  {isPasswordFocused && (
+    <>
+      <button ><Check size={20}></Check></button>
+      <button onClick={() => setIsPasswordFocused(false)}><X size={20}></X></button>
+    </>
+  )}
+</div>
+            </div>
+        </div>
           }
 
         </>

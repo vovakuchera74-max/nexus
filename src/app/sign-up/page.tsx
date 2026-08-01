@@ -12,13 +12,25 @@ import { useState } from "react";
 import { ArrowRight } from 'lucide-react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { signUp, signUpValue } from "../../validations/signUpSchema"
+import { signUp, signUpValue } from "../../validations/signUpSchema";
+import { createClient } from "@/lib/supabase-browser"
+import { useRouter } from "next/navigation"
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
 });
 
 export default function SignUp (){
+const handleGitHub = async () => {
+  const supabase = createClient();
+  await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`
+    }
+  });
+}
+    const router = useRouter();
     const [EyeOpen,setEyeOpen] = useState(false);
     const [EyeOpenRep,setEyeOpenRep] = useState(false);
     const {
@@ -29,8 +41,25 @@ export default function SignUp (){
   mode: "onTouched",
   resolver: zodResolver(signUp),
 })
-const onSubmit = (data:signUpValue) => {
-  console.log(data)
+const onSubmit = async (data: signUpValue) => {
+  const supabase = createClient();
+  
+  const { error } = await supabase.auth.signUp({
+  email: data.email,
+  password: data.password,
+  options: {
+    data: {
+      username: data.username,
+    }
+  }
+});
+
+  if (error) {
+  console.log(error)
+  return;
+}
+
+  router.push('/'); // ← тут, після успіху
 }
 
     return(
@@ -50,7 +79,7 @@ const onSubmit = (data:signUpValue) => {
                     <Link href={"sign-in"} className={s.sign}>Sign in</Link>
                 </div>
                 <div className={`${s.SingUpСhoice} ${inter.className}`}>
-                    <div className={s.GitBlock}>
+                    <div className={s.GitBlock} onClick={handleGitHub}>
                         <div className={s.GitImg}><FiGithub size={16}/></div>
                         <div className={s.GitWords}>GitHub</div>
                     </div>

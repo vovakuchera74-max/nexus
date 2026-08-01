@@ -268,7 +268,7 @@ font-size: 14px;
     background-color: rgb(18, 18, 30);
     border: rgba(168, 85, 247, 0.25) 1px solid;
     color: rgb(196, 184, 240);
-    width: 222px;
+    min-width: 222px;
     border-radius: 10px;
     top: 45px;
     right: 0px;
@@ -363,4 +363,221 @@ font-size: 14px;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
   }
+}
+.ProfilHellow{
+  display: flex;
+ margin-bottom: 5px;
+   font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #7F77DD, #C4B8F0, #534AB7, rgb(168, 85, 247));
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s ease infinite;
+
+}
+.ProfileSomeText{
+    display: flex;
+  color: rgb(196, 184, 240);
+   font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+.Profilbottom2{
+  display: flex;
+  padding: 12px ;
+  gap: 8px;
+}
+.SignInBtn{
+  display: flex;
+  padding: 7px 14px;
+  align-items: center;
+  background: linear-gradient(135deg, rgb(168, 85, 247), rgb(99, 102, 241));
+  border: solid 1px rgba(168, 85, 247, 0.15);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(240, 238, 255);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s opacity ease-in;
+    &:hover{
+        box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 20px 0px;
+        opacity: 0.9;
+    }
+}
+
+.SignUpBtn {
+  display: flex;
+  align-items: center;
+  padding: 7px 14px;
+  border: 1px solid rgb(196, 184, 240);
+  color: rgb(196, 184, 240);
+  font-size: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    border: 1px solid rgb(168, 85, 247);
+    color: rgb(168, 85, 247);
+    background-color: rgba(168, 85, 247, 0.15);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+    backdrop-filter: blur(4px);
+  }
+}
+.FullScrin {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.Overlay3 {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.SettingsBlock {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  height: 440px;
+  background: rgb(18, 18, 30);
+  border-radius: 16px;
+}
+.CloseBlock{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  padding-bottom: 18px;
+}
+.AccountSettings{
+  display: flex;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgb(168, 85, 247);
+}
+.Xbtn2{
+      display: flex;
+    padding: 8px;
+    color: #C4B8F0;
+    background-color:  rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease , box-shadow 0.3s ease;
+    &:hover{
+        transform: scale(1.15);
+        color: rgb(168, 85, 247);
+        box-shadow: 0 0 10px rgb(168, 85, 247);
+    }
+}
+.Avatar{
+  display: flex;
+  border-bottom: rgba(168, 85, 247, 0.15) 1px solid;
+  padding-bottom: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  gap: 10px;
+}
+.photoAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgb(168, 85, 247);
+  box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 20px 0px;
+}
+.NickEmailBlock{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-bottom: 15px;
+}
+.Nick{
+  display: flex;
+  color: rgb(240, 238, 255);
+  font-size: 16px;
+  font-weight: 700;
+}
+.Email{
+  display: flex;
+    color: rgb(107, 104, 144);
+    font-size: 15px;
+    font-weight: 400;
+}
+.NickWords{
+  cursor: pointer;
+  margin-right: 24px;
+  margin-left: 24px;
+  margin-top: 20px;
+  display: flex;
+  background-color: rgb(18, 18, 30);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 14px;
+  gap: 5px;
+  padding: 12px 14px;
+  align-items: center;
+  transition: border-color 0.2s ease,color 0.2s ease,box-shadow 0.2s ease; 
+  &:focus-within {
+    border-color: rgba(168, 85, 247);
+    box-shadow: 0px 0px 0px 3px rgba(168, 85, 247, 0.1);
+    .OptiImg{
+      color: rgba(168, 85, 247);
+    }
+
+  }
+}
+.NickWords2{
+  cursor: pointer;
+  margin-right: 24px;
+  margin-left: 24px;
+  margin-top: 13px;
+  display: flex;
+  background-color: rgb(18, 18, 30);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 14px;
+  gap: 5px;
+  padding: 12px 14px;
+  align-items: center;
+  transition: border-color 0.2s ease,color 0.2s ease,box-shadow 0.2s ease; 
+  &:focus-within {
+    border-color: rgba(168, 85, 247);
+    box-shadow: 0px 0px 0px 3px rgba(168, 85, 247, 0.1);
+
+    .OptiImg{
+      color: rgba(168, 85, 247);
+    }
+
+  }
+}
+.OptiImg{
+  display: flex;
+  color: rgb(107, 104, 144);
+  flex-shrink: 0;
+}
+.NickInput{
+  cursor: pointer;
+  display: flex;
+  color: rgb(240, 238, 255);
+  border: none;      
+  outline: none;    
+  background: transparent; 
+  width: 100%;
+
 }
