@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation'
 import { Check } from 'lucide-react';
 import { Mail} from "lucide-react"
 import { IoLockClosedOutline } from "react-icons/io5";
+import { Camera } from 'lucide-react';
 
 
 const inter = Inter({
@@ -201,7 +202,12 @@ const handleSignOut = async () => {
                 <div className={s.Xbtn2} onClick={()=>setIsSettingsOpen(false)}><X size={20}></X></div>
               </div>
               <div className={s.Avatar}>
-                <img className={s.photoAvatar} src="https://genshinbuild.com/images/Icons/Hu_Tao.png" alt="" />
+                <div className={s.photoAvatarBlock}>
+                  <div  className={s.photoAvatar}>
+<img  src="https://genshinbuild.com/images/Icons/Hu_Tao.png" alt="" />
+                  </div>
+                  <button className={s.Pgotik}><Camera size={11}></Camera></button>
+                </div>
                 <div className={s.NickEmailBlock}>
                   <div className={s.Nick}>Vova</div>
                   <div className={s.Email}>Vovanlucjera@gmail.com</div>
@@ -216,8 +222,8 @@ const handleSignOut = async () => {
   />
   {isNickFocused && (
     <>
-      <button ><Check size={20}></Check></button>
-      <button onClick={() => setIsNickFocused(false)}><X size={20}></X></button>
+      <button className={s.yes}><Check size={16}></Check></button>
+      <button className={s.no} onClick={() => setIsNickFocused(false)}><X size={16}></X></button>
     </>
   )}
 </div>
@@ -231,8 +237,8 @@ const handleSignOut = async () => {
   />
   {isEmailFocused && (
     <>
-      <button ><Check size={20}></Check></button>
-      <button onClick={() => setIsEmailFocused(false)}><X size={20}></X></button>
+      <button className={s.yes}><Check size={16}></Check></button>
+      <button className={s.no} onClick={() => setIsEmailFocused(false)}><X size={16}></X></button>
     </>
   )}
 </div>
@@ -246,8 +252,8 @@ const handleSignOut = async () => {
   />
   {isPasswordFocused && (
     <>
-      <button ><Check size={20}></Check></button>
-      <button onClick={() => setIsPasswordFocused(false)}><X size={20}></X></button>
+      <button className={s.yes}><Check size={16}></Check></button>
+      <button className={s.no} onClick={() => setIsPasswordFocused(false)}><X size={16}></X></button>
     </>
   )}
 </div>

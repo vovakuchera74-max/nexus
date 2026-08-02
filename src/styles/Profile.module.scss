@@ -493,15 +493,70 @@ font-size: 14px;
   gap: 10px;
 }
 .photoAvatar {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 90px;
   height: 90px;
-  object-fit: cover;
   border-radius: 50%;
-  border: 2px solid rgb(168, 85, 247);
   box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 20px 0px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -2px; 
+    border-radius: 50%;
+    
+    border: 2px solid transparent;
+
+    border-top-color: rgb(168, 85, 247);
+    border-bottom-color: rgb(168, 85, 247);
+    
+    animation: spin-avatar 1.2s linear infinite;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 50%;
+    position: relative;
+    z-index: 1; 
+  }
+}
+
+@keyframes spin-avatar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.photoAvatarBlock{
+  display: flex;
+  position: relative;
+}
+.Pgotik{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 2;
+  right: 2;
+  z-index: 100;
+  background-color: rgb(168, 85, 247);
+  border: rgb(13, 13, 26) 1px solid;
+  border-radius: 3.35544e+07px;
+  color: rgb(240, 238, 255);
+  cursor: pointer;
+  height: 26px;
+  width: 26px;
+  font-weight: 700;
+  transition: 0.2s all;
+  &:hover{
+    background-color: rgb(147, 51, 234);
+  }
 }
 .NickEmailBlock{
   display: flex;
@@ -579,5 +634,32 @@ font-size: 14px;
   outline: none;    
   background: transparent; 
   width: 100%;
+  height: 28px;
 
+}
+.yes{
+  cursor: pointer;
+  display: flex;
+  background-color: rgba(34, 197, 94, 0.094);
+  border: rgba(168, 85, 247, 0.15) solid 1px;
+  color: rgb(34, 197, 94);
+  border-radius: 10px;
+  padding: 5px;
+  transition: 0.2s all;
+  &:hover{
+    background-color: rgba(34, 197, 94, 0.19);
+  }
+}
+.no{
+  cursor: pointer;
+  display: flex;
+  background-color: rgba(239, 68, 68, 0.094);
+  border: rgba(168, 85, 247, 0.15) solid 1px;
+  color: rgb(239, 68, 68);
+  border-radius: 10px;
+  padding: 5px;
+  transition: 0.2s all;
+  &:hover{
+    background-color: rgba(239, 68, 68, 0.19);
+  }
 }
