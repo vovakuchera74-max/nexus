@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 Nexus — Gaming Store
 
-## Getting Started
+A full-featured gaming e-commerce store built with Next.js 16, Supabase, and TypeScript. Dark purple aesthetic, modern UI, and a complete shopping experience.
 
-First, run the development server:
+## 🔗 Demo
+
+> [Live Demo](https://nexus.vercel.app) · [GitHub](https://github.com/vovakuchera74-max/nexus)
+
+---
+
+## 📸 Screenshots
+
+![Home](public/screenshots/home.png)
+![Catalog](public/screenshots/settings.png)
+---
+
+## ✨ Features
+
+- 🛍️ **Product Catalog** — grid and list view, with filtering by category, brand, price range, and stock
+- 🔍 **Search** — debounced real-time search across all products
+- 🛒 **Cart** — add/remove items, quantity control, subtotal — persisted in Zustand
+- ❤️ **Wishlist** — save favorite items, with toggle and badge count
+- 🔐 **Authentication** — email/password sign up & sign in, GitHub OAuth
+- 👤 **Profile** — update username, email, and password from a settings modal
+- 🎨 **Dark UI** — custom dark purple palette with hover effects and animations
+- 📱 Responsive — desktop-first layout with slide-in filter drawer on mobile
+- ⚙️ **Skeleton & Error pages** — loading states and error boundaries
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | SCSS Modules |
+| Database | Supabase (PostgreSQL) |
+| Auth | Supabase Auth + GitHub OAuth |
+| State | Zustand |
+| Forms | React Hook Form + Zod |
+| Icons | Lucide React, React Icons |
+| Testing | Jest + React Testing Library |
+| Deployment | Vercel |
+
+---
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/vovakuchera74-max/nexus.git
+cd nexus
+
+# Install dependencies
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🗄️ Database Schema
 
-## Learn More
+| Table | Description |
+|---|---|
+| `products` | All store products with price, stock, rating |
+| `categories` | Product categories (Consoles, Keyboards, etc.) |
+| `profiles` | User profiles with username and avatar |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/              # Next.js App Router pages
+├── components/       # Reusable UI components
+├── hooks/            # Custom React hooks (useDebounce)
+├── lib/              # Supabase clients (browser, server)
+├── store/            # Zustand stores (cart, wishlist)
+├── styles/           # SCSS Modules
+├── types/            # TypeScript interfaces
+└── validations/      # Zod schemas
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧪 Tests
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm test
+```

@@ -31,12 +31,10 @@ describe('Cart Store', () => {
     expect(items).toHaveLength(0)
   })
   describe('cartStore', () => {
-  it('adds item to cart', () => {
-    const { addItem, items } = useCartStore.getState()
-    addItem(mockProduct)
-    expect(useCartStore.getState().items).toHaveLength(1)
+    it('adds item to cart', () => {
+      const { addItem, items } = useCartStore.getState()
+      addItem(mockProduct)
+      expect(useCartStore.getState().items).toHaveLength(1)
+    })
   })
-})
-
-  
 })

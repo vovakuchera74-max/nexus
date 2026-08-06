@@ -117,8 +117,13 @@
 
 // --- Анімація пульсації ---
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .skeletonTitle,
@@ -146,18 +151,18 @@
 .skeletonLine {
   height: 14px;
 }
-@media(max-width:1100px){
-    .gridSkeleton{
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
+@media (max-width: 1100px) {
+  .gridSkeleton {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }
-@media(max-width:800px){
-    .gridSkeleton{
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    .sidebarSkeleton{
-      display: none;
-    }
+@media (max-width: 800px) {
+  .gridSkeleton {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .sidebarSkeleton {
+    display: none;
+  }
 }

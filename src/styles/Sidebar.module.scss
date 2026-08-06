@@ -1,72 +1,68 @@
-.filters{
-    display: flex;
-    flex-direction: column;
-    width: 230px;
-    padding: 15px;
-    margin-top: 15px;
-    background-color: rgb(18, 18, 30);
-    border: 1px solid rgba(168, 85, 247, 0.15);
-    border-radius: 14px;
-    overflow-y: auto;
-    height: 700;
-    gap: 15px;
-    padding-right: 8px; 
-
+.filters {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  padding: 15px;
+  margin-top: 15px;
+  background-color: rgb(18, 18, 30);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 14px;
+  overflow-y: auto;
+  height: 700;
+  gap: 15px;
+  padding-right: 8px;
 
   scrollbar-width: thin;
   scrollbar-color: #9d4edd #131129;
 
- 
   &::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
   }
 
   &::-webkit-scrollbar-track {
-    background: #131129; 
+    background: #131129;
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #8a2be2; 
-    border-radius: 10px; 
+    background: #8a2be2;
+    border-radius: 10px;
   }
-
 }
-.logoFilter{
-    display: flex;
-    gap: 5px;
+.logoFilter {
+  display: flex;
+  gap: 5px;
 
-    color: rgb(168, 85, 247);
+  color: rgb(168, 85, 247);
 }
-.logoblockk{
+.logoblockk {
   display: flex;
   justify-content: space-between;
 }
-.filterword{
-    display: flex;
-    color: rgb(240, 238, 255);
-    font-size: 14px;
-    font-weight: 700;
+.filterword {
+  display: flex;
+  color: rgb(240, 238, 255);
+  font-size: 14px;
+  font-weight: 700;
 }
-.Cat{
-color: rgb(107, 104, 144);
-font-size: 11px;
-font-weight: 700;
-margin-bottom: 10px;
+.Cat {
+  color: rgb(107, 104, 144);
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
-.OptionsCat{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
+.OptionsCat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 .checkboxInput {
   display: none;
 }
-.checkboxLabel{
-    display: flex;
-    gap: 10px;
-    align-items: center;
+.checkboxLabel {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 .checkboxCustom {
   width: 16px;
@@ -81,12 +77,12 @@ margin-bottom: 10px;
   transition: all 0.2s ease;
   cursor: pointer;
 }
-.checkboxText{
-    display: flex;
-    color: rgb(196, 184, 240);
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
+.checkboxText {
+  display: flex;
+  color: rgb(196, 184, 240);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
 }
 .checkboxInput:checked + .checkboxCustom {
   background: rgba(168, 85, 247, 0.2);
@@ -102,60 +98,60 @@ margin-bottom: 10px;
     display: block;
   }
 }
-.checkboxInput:checked ~ .checkboxText{
-    color: rgb(168, 85, 247);
+.checkboxInput:checked ~ .checkboxText {
+  color: rgb(168, 85, 247);
 }
-.borde{
-    background-color: rgba(168, 85, 247, 0.1);
-    
-    padding: 1px;
+.borde {
+  background-color: rgba(168, 85, 247, 0.1);
+
+  padding: 1px;
 }
-.BrandFilter{
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
+.BrandFilter {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
 }
-.CategoryFilter{
-    display: flex;
-    flex-direction: column;
+.CategoryFilter {
+  display: flex;
+  flex-direction: column;
 }
-.PriceFilter{
-    display: flex;
-    margin-top: 5px;
-    flex-direction: column;
+.PriceFilter {
+  display: flex;
+  margin-top: 5px;
+  flex-direction: column;
 }
-.curentPrice{
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 10px;
+.curentPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.MaxPrice{
-display: flex;
-color: rgb(107, 104, 144);
-font-size: 11px;
-font-weight: 700;
+.MaxPrice {
+  display: flex;
+  color: rgb(107, 104, 144);
+  font-size: 11px;
+  font-weight: 700;
 }
-.curentP{
-display: flex;
-color: rgb(168, 85, 247);
-font-size: 14px;
-font-weight: 700;
+.curentP {
+  display: flex;
+  color: rgb(168, 85, 247);
+  font-size: 14px;
+  font-weight: 700;
 }
-.Bar{
-    accent-color: rgb(168, 85, 247);
-    margin-bottom: 10px;
+.Bar {
+  accent-color: rgb(168, 85, 247);
+  margin-bottom: 10px;
 }
-.PriceOptions{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.PriceOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.minmaxvalue{
-    display: flex;
-    color: rgb(107, 104, 144);
-font-size: 14px;
-font-weight: 700;
+.minmaxvalue {
+  display: flex;
+  color: rgb(107, 104, 144);
+  font-size: 14px;
+  font-weight: 700;
 }
 .toggleInput {
   display: none;
@@ -192,7 +188,6 @@ font-weight: 700;
 }
 .toggleInput:checked ~ .toggleText {
   color: rgb(168, 85, 247);
-
 }
 
 .toggleLabel {
@@ -209,7 +204,7 @@ font-weight: 700;
   color: rgb(196, 184, 240);
   font-weight: 500;
 }
-.resetALL{
+.resetALL {
   display: flex;
   color: rgb(107, 104, 144);
   font-size: 12px;
@@ -217,46 +212,42 @@ font-weight: 700;
   border-bottom: rgba(168, 85, 247, 0.15) 1px solid;
   cursor: pointer;
 }
-@media(max-width:800px){
-    .filters{
-      display: none;
-    }
+@media (max-width: 800px) {
+  .filters {
+    display: none;
+  }
 }
-.filtersblock{
-    display: flex;
-    flex-direction: column;
-    width: 260px;
-    padding: 15px;
-    height: 100%;
-    background-color: rgb(18, 18, 30);
-    border: 1px solid rgba(168, 85, 247, 0.15);
-    border-radius: 14px;
-    overflow-y: auto;
-    gap: 20px;
-    padding-right: 8px; 
-
+.filtersblock {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  padding: 15px;
+  height: 100%;
+  background-color: rgb(18, 18, 30);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 14px;
+  overflow-y: auto;
+  gap: 20px;
+  padding-right: 8px;
 
   scrollbar-width: thin;
   scrollbar-color: #9d4edd #131129;
 
- 
   &::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
   }
 
   &::-webkit-scrollbar-track {
-    background: #131129; 
+    background: #131129;
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #8a2be2; 
-    border-radius: 10px; 
+    background: #8a2be2;
+    border-radius: 10px;
   }
 
   animation: slideIn 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-  
-
 }
 @keyframes slideIn {
   from {
@@ -266,32 +257,35 @@ font-weight: 700;
     transform: translateX(0);
   }
 }
-.topFilter{
+.topFilter {
   padding: 0 5px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.Howmanyreslts{
+.Howmanyreslts {
   display: flex;
   font-size: 13px;
   gap: 5px;
   font-weight: 700;
-  span{
-      color: rgb(196, 184, 240);
-    }
+  span {
+    color: rgb(196, 184, 240);
+  }
 }
-.btnFilterclose{
-    display: flex;
-    padding: 8px;
-    color: #C4B8F0;
-    background-color:  rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease , box-shadow 0.3s ease;
-    &:hover{
-        transform: scale(1.15);
-        color: white;
-        box-shadow: 0 0 10px #888888;
-    }
+.btnFilterclose {
+  display: flex;
+  padding: 8px;
+  color: #c4b8f0;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  cursor: pointer;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  &:hover {
+    transform: scale(1.15);
+    color: white;
+    box-shadow: 0 0 10px #888888;
+  }
 }

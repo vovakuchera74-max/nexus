@@ -1,9 +1,8 @@
-.main{
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
 }
 .content {
   display: flex;
@@ -12,64 +11,62 @@
   padding: 20px;
   width: 100%;
   max-width: 1300px;
-  
 }
-.ProductBlock{
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    width: 100%;
+.ProductBlock {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
 }
-.productsGrid{
-    display: grid;
+.productsGrid {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-.minifilter{
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-
+.minifilter {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
 }
-.many{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    color: rgb(240, 238, 255);
-    font-weight: 600;
-    font-size: 14px;
-    span{
-        color: rgb(107, 104, 144);
-    }
+.many {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: rgb(240, 238, 255);
+  font-weight: 600;
+  font-size: 14px;
+  span {
+    color: rgb(107, 104, 144);
+  }
 }
-.Blockfil{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+.Blockfil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
-@media(max-width:1100px){
-    .productsGrid{
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
+@media (max-width: 1100px) {
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }
-@media(max-width:800px){
-    .productsGrid{
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
+@media (max-width: 800px) {
+  .productsGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
-@media(max-width:600px){
-    .minifilter{
-        padding: 15px 5px;
-    }
-    .many{
-        font-size: 12px;
-        gap: 4px;
-    }
-    .content{
-        padding: 20px 5px;
-    }
+@media (max-width: 600px) {
+  .minifilter {
+    padding: 15px 5px;
+  }
+  .many {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .content {
+    padding: 20px 5px;
+  }
 }

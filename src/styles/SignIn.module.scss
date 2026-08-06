@@ -1,37 +1,37 @@
 .SingUpPage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 100vh;
-    padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 15px;
 }
-.SingUpBlock{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(168, 85, 247, 0.18);
-    background-color: rgb(13, 13, 26);
-    border-radius: 16px;
-    box-shadow: rgba(99, 102, 241, 0.07) 0px 0px 60px 0px, rgba(0, 0, 0, 0.5) 0px 24px 48px 0px;
-    padding: 25px 40px;
-    width: 448px;
-    
+.SingUpBlock {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  background-color: rgb(13, 13, 26);
+  border-radius: 16px;
+  box-shadow:
+    rgba(99, 102, 241, 0.07) 0px 0px 60px 0px,
+    rgba(0, 0, 0, 0.5) 0px 24px 48px 0px;
+  padding: 25px 40px;
+  width: 448px;
 }
-.SingUpLogo{
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
+.SingUpLogo {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 .orbitron {
   font-family: var(--font-orbitron);
 }
 
-
 .log {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #A855F7;
+  color: #a855f7;
   animation: shake 2s ease-in-out infinite;
 }
 
@@ -39,7 +39,7 @@
   display: flex;
   font-size: 16px;
   font-weight: 600;
-  background: linear-gradient(90deg, #7F77DD, #C4B8F0, #534AB7, #7F77DD);
+  background: linear-gradient(90deg, #7f77dd, #c4b8f0, #534ab7, #7f77dd);
   background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -47,30 +47,45 @@
 }
 
 @keyframes shake {
-  0%, 100% { transform: rotate(0deg); }
-  20% { transform: rotate(-8deg); }
-  40% { transform: rotate(8deg); }
-  60% { transform: rotate(-4deg); }
-  80% { transform: rotate(4deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  80% {
+    transform: rotate(4deg);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
-.SingUpWords{
-    display: flex;
-    font-weight: 800;
-    font-size: 28px;
-    color: rgb(240, 238, 255);
+.SingUpWords {
+  display: flex;
+  font-weight: 800;
+  font-size: 28px;
+  color: rgb(240, 238, 255);
 }
-.SingUpLink{
+.SingUpLink {
   display: flex;
   gap: 5px;
   align-items: center;
   margin-bottom: 28px;
 }
-.Already{
+.Already {
   display: flex;
   color: rgb(107, 104, 144);
   font-size: 14px;
@@ -80,55 +95,28 @@
   color: rgb(168, 85, 247);
   font-weight: 600;
   font-size: 16px;
-  
+
   /* Додаємо підкреслення */
   text-decoration: underline;
   text-decoration-color: transparent; /* ховаємо за дефолтом */
   text-underline-offset: 4px; /* відступ лінії від тексту */
   text-decoration-thickness: 1.5px; /* товщина лінії */
-  
+
   /* Плавний перехід для кольору лінії */
-  transition: text-decoration-color 0.2s ease-in-out; 
+  transition: text-decoration-color 0.2s ease-in-out;
 }
 
 .sign:hover {
   /* При наведенні лінія стає фіолетовою */
-  text-decoration-color: rgb(168, 85, 247); 
+  text-decoration-color: rgb(168, 85, 247);
 }
-.SingUpСhoice{
+.SingUpСhoice {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 20px;
 }
-.GoogleBlock{
-  cursor: pointer;
-   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background-color: rgb(30, 30, 48);
-  border: 1px solid rgba(168, 85, 247, 0.15);
-  border-radius: 14px;
-  color: rgb(196, 184, 240);
-  transition: color 0.2s ease-in-out , border-color 0.2s ease-in-out; 
-  &:hover{
-    border-color: rgba(168, 85, 247, 0.45);
-    color: rgba(168, 85, 247, );
-  }
-   width:100%;
-  max-width: 177px;
-  height: 42px;
-  padding: 10px 0;
-}
-.GoogleWords{
-  display: flex;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-
-.GitBlock{
+.GoogleBlock {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -138,57 +126,85 @@
   border: 1px solid rgba(168, 85, 247, 0.15);
   border-radius: 14px;
   color: rgb(196, 184, 240);
-  transition: color 0.2s ease-in-out , border-color 0.2s ease-in-out; 
-  &:hover{
+  transition:
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  &:hover {
     border-color: rgba(168, 85, 247, 0.45);
-    color: rgba(168, 85, 247, );
+    color: rgba(168, 85, 247);
   }
-   width:100%;
+  width: 100%;
   max-width: 177px;
   height: 42px;
   padding: 10px 0;
 }
-.GitWords{
+.GoogleWords {
   display: flex;
   font-size: 14px;
   font-weight: 600;
 }
-.SingUpBorder{
+
+.GitBlock {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: rgb(30, 30, 48);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 14px;
+  color: rgb(196, 184, 240);
+  transition:
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  &:hover {
+    border-color: rgba(168, 85, 247, 0.45);
+    color: rgba(168, 85, 247);
+  }
+  width: 100%;
+  height: 42px;
+  padding: 10px 0;
+}
+.GitWords {
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+}
+.SingUpBorder {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
-  
 }
-.Line{
+.Line {
   display: flex;
   border: rgba(168, 85, 247, 0.15) 1px solid;
   width: 100%;
 }
-.Words{
+.Words {
   display: flex;
   font-size: 12px;
   justify-content: center;
   width: 250px;
   color: rgb(61, 58, 96);
 }
-.SingUpBlockBottom{
+.SingUpBlockBottom {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-.OptiBlock{
+.OptiBlock {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-.Optiname{
+.Optiname {
   display: flex;
   color: rgb(107, 104, 144);
   font-size: 14px;
   font-weight: 600;
 }
-.Optiwriten{
+.Optiwriten {
   cursor: pointer;
   display: flex;
   background-color: rgb(18, 18, 30);
@@ -197,41 +213,46 @@
   gap: 10;
   padding: 12px 14px;
   align-items: center;
-  transition: border-color 0.2s ease,color 0.2s ease,box-shadow 0.2s ease; 
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
   &:focus-within {
     border-color: rgba(168, 85, 247);
     box-shadow: 0px 0px 0px 3px rgba(168, 85, 247, 0.1);
-    .OptiImg{
+    .OptiImg {
       color: rgba(168, 85, 247);
     }
-
   }
 }
-.OptiImg{
+.OptiImg {
   display: flex;
   color: rgb(107, 104, 144);
 }
-.OptiInput{
+.OptiInput {
   cursor: pointer;
   display: flex;
   color: rgb(240, 238, 255);
-  border: none;      
-  outline: none;    
-  background: transparent; 
+  border: none;
+  outline: none;
+  background: transparent;
   width: 100%;
-
 }
-.EyeRepet{
+.EyeRepet {
   display: flex;
   color: rgb(107, 104, 144);
   cursor: pointer;
 }
-.Regbtn{
+.Regbtn {
   margin-top: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(135deg, rgb(168, 85, 247), rgb(99, 102, 241));
+  background-image: linear-gradient(
+    135deg,
+    rgb(168, 85, 247),
+    rgb(99, 102, 241)
+  );
   width: 100%;
   padding: 12px 0;
   border-radius: 14px;
@@ -239,7 +260,10 @@
   gap: 5px;
   color: rgb(255, 255, 255);
   box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 20px 0px;
-  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
   &:hover {
     filter: brightness(1.08);
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
@@ -250,7 +274,7 @@
     filter: brightness(0.95);
   }
 }
-.RegbtnText{
+.RegbtnText {
   display: flex;
   font-size: 14px;
   font-weight: 700;
@@ -293,41 +317,41 @@
   border-bottom-width: 2px;
   border-right-width: 2px;
 }
-.ConfirmOpt{
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(61, 58, 96);
-    font-size: 13px;
+.ConfirmOpt {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(61, 58, 96);
+  font-size: 13px;
 }
-.someText1{
-    display: flex;
-    margin-left: 5px;
-    margin-right: 5px;
-    color: rgb(196, 184, 240);
-    text-decoration: underline;
+.someText1 {
+  display: flex;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: rgb(196, 184, 240);
+  text-decoration: underline;
   text-underline-offset: 4px; /* відступ лінії від тексту */
   text-decoration-thickness: 1px; /* товщина лінії */
-  text-decoration-color: rgb(196, 184, 240); 
+  text-decoration-color: rgb(196, 184, 240);
 }
-.someText2{
-    display: flex;
-    margin-left: 5px;
-    
-    color: rgb(196, 184, 240);
-    text-decoration: underline;
+.someText2 {
+  display: flex;
+  margin-left: 5px;
+
+  color: rgb(196, 184, 240);
+  text-decoration: underline;
   text-underline-offset: 4px; /* відступ лінії від тексту */
   text-decoration-thickness: 1px; /* товщина лінії */
-  text-decoration-color: rgb(196, 184, 240); 
+  text-decoration-color: rgb(196, 184, 240);
 }
-.errorText{
+.errorText {
   display: flex;
   margin-left: 3px;
   font-size: 12px;
   color: rgb(239, 68, 68);
 }
-.OptiwritenError{
+.OptiwritenError {
   cursor: pointer;
   display: flex;
   background-color: rgb(18, 18, 30);
@@ -337,28 +361,27 @@
   padding: 12px 14px;
   align-items: center;
 }
-@media(max-width:550px){
-  .corner{
+@media (max-width: 550px) {
+  .corner {
     display: none;
   }
 }
-@media(max-width:480px){
-  .SingUpBlock{
+@media (max-width: 480px) {
+  .SingUpBlock {
     padding: 25px 30px;
   }
 }
-@media(max-width:460px){
-  .SingUpBlock{
+@media (max-width: 460px) {
+  .SingUpBlock {
     padding: 25px 20px;
   }
-  .SingUpBlock{
+  .SingUpBlock {
     width: 100%;
   }
-  .OptiInput{
+  .OptiInput {
     font-size: 14px;
   }
-  .ConfirmOpt{
+  .ConfirmOpt {
     font-size: 11px;
   }
-
 }

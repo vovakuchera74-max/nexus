@@ -1,8 +1,7 @@
-.SortDropdown{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
+.SortDropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .trigger {
   display: flex;
@@ -23,9 +22,9 @@
     outline: rgba(168, 85, 247, 0.5) 1px solid;
   }
 }
-.SortValue{
-    display: flex;
-    width: 140px;
+.SortValue {
+  display: flex;
+  width: 140px;
 }
 .sortlible {
   display: flex;
@@ -79,26 +78,26 @@
   border-radius: 10px 10px 0 0;
   border-bottom: none;
 }
-@media(max-width:600px){
-  .SortValue{
+@media (max-width: 600px) {
+  .SortValue {
     font-size: 10px;
     width: 90px;
   }
-  .trigger{
+  .trigger {
     padding: 4px 6px;
     gap: 3px;
   }
-  .sortlible{
+  .sortlible {
     width: 132px;
   }
-  .option{
+  .option {
     font-size: 10px;
   }
-  .arrowicon{
+  .arrowicon {
     width: 11px;
     height: 11px;
   }
-  .updown{
+  .updown {
     width: 11px;
     height: 11px;
   }
