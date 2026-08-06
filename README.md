@@ -44,7 +44,6 @@ A full-featured gaming e-commerce store built with Next.js 16, Supabase, and Typ
 | Deployment | Vercel                       |
 
 ---
-
 ## 🚀 Getting Started
 
 ### Installation
