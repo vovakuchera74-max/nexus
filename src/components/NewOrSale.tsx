@@ -1,5 +1,4 @@
 import s from '../styles/NewOrSale.module.scss'
-import { Trash2 } from 'lucide-react'
 
 export default function NewOrSale({
   isNew,

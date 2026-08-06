@@ -1,10 +1,10 @@
 'use client'
 import s from '../../styles/SignUp.module.scss'
 import Link from 'next/link'
-import { Gamepad2, User, Mail, Check } from 'lucide-react'
+import { Gamepad2, User, Mail} from 'lucide-react'
 import { Inter } from 'next/font/google'
 import { FiGithub } from 'react-icons/fi'
-import { FaGoogle } from 'react-icons/fa'
+
 import { IoLockClosedOutline } from 'react-icons/io5'
 import { Eye } from 'lucide-react'
 import { EyeOff } from 'lucide-react'
@@ -36,7 +36,7 @@ export default function SignUp() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors},
   } = useForm<signUpValue>({
     mode: 'onTouched',
     resolver: zodResolver(signUp),

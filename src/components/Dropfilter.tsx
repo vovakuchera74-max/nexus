@@ -1,5 +1,5 @@
 'use client'
-import { SlidersHorizontal, X } from 'lucide-react'
+import { SlidersHorizontal} from 'lucide-react'
 import s from '../styles/btnfilter.module.scss'
 import Sidebar from './Sidebar'
 import { useFilterPanelStore } from '@/store/FilterPanelStore'

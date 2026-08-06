@@ -32,7 +32,7 @@ describe('Cart Store', () => {
   })
   describe('cartStore', () => {
     it('adds item to cart', () => {
-      const { addItem, items } = useCartStore.getState()
+      const { addItem} = useCartStore.getState()
       addItem(mockProduct)
       expect(useCartStore.getState().items).toHaveLength(1)
     })

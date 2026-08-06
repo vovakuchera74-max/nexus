@@ -12,7 +12,6 @@ const inter = Inter({
   weight: ['400', '500'],
 })
 export default function CardCart({ item }: { item: CartItem }) {
-  const getTotalCount = useCartStore((state) => state.getTotalCount)
   const removeItem = useCartStore((state) => state.removeItem)
 
   return (

@@ -1,10 +1,9 @@
 'use client'
 import s from '../../styles/SignIn.module.scss'
 import Link from 'next/link'
-import { Gamepad2, User, Mail, Check } from 'lucide-react'
+import { Gamepad2,Mail} from 'lucide-react'
 import { Inter } from 'next/font/google'
 import { FiGithub } from 'react-icons/fi'
-import { FaGoogle } from 'react-icons/fa'
 import { IoLockClosedOutline } from 'react-icons/io5'
 import { Eye } from 'lucide-react'
 import { EyeOff } from 'lucide-react'
@@ -35,7 +34,7 @@ export default function SignUp() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors},
   } = useForm<signInValue>({
     mode: 'onTouched',
     resolver: zodResolver(signIn),
@@ -68,7 +67,7 @@ export default function SignUp() {
         </Link>
         <div className={s.SingUpWords}>Sign In</div>
         <div className={`${s.SingUpLink} ${inter.className}`}>
-          <div className={s.Already}>Don't have an account?</div>
+          <div className={s.Already}>Don&apos;t have an account?</div>
           <Link href={'sign-up'} className={s.sign}>
             Create one
           </Link>

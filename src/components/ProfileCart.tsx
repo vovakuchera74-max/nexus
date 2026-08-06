@@ -1,6 +1,6 @@
 'use client'
 import s from '../styles/Profile.module.scss'
-import { useState ,useRef } from 'react'
+import { useState, useRef } from 'react'
 import {
   ShoppingCart,
   ChevronDown,
@@ -30,10 +30,10 @@ const inter = Inter({
   weight: ['400', '500'],
 })
 export default function HeaderActions({ user }: { user: User | null }) {
-  const avatarInputRef = useRef<HTMLInputElement>(null);
-  const [newEmail, setNewEmail] = useState('');
-const [newPassword, setNewPassword] = useState('');
-  const [newNick, setNewNick] = useState('');
+  const avatarInputRef = useRef<HTMLInputElement>(null)
+  const [newEmail, setNewEmail] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [newNick, setNewNick] = useState('')
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const [isNickFocused, setIsNickFocused] = useState(false)
   const [isEmailFocused, setIsEmailFocused] = useState(false)
@@ -51,66 +51,66 @@ const [newPassword, setNewPassword] = useState('');
     await supabase.auth.signOut()
     router.refresh()
   }
-const handleSaveNick = async () => {
-  const supabase = createClient()
-  await supabase.auth.updateUser({
-    data: { username: newNick }
-  })
-  setIsNickFocused(false)
-  setNewNick('')
-  router.refresh()
-}
-const handleSaveEmail = async () => {
-  console.log('newEmail:', newEmail)
-  const supabase = createClient()
-  const { error } = await supabase.auth.updateUser({
-    email: newEmail
-  })
-  if (error) {
-    console.log(error)
-    return
+  const handleSaveNick = async () => {
+    const supabase = createClient()
+    await supabase.auth.updateUser({
+      data: { username: newNick },
+    })
+    setIsNickFocused(false)
+    setNewNick('')
+    router.refresh()
   }
-  setIsEmailFocused(false)
-  setNewEmail('')
-  router.refresh()
-}
-const handleSavePassword = async () => {
-  const supabase = createClient()
-  await supabase.auth.updateUser({
-   password: newPassword
-  })
-  setIsPasswordFocused(false)
-  setNewPassword('')
-  router.refresh()
-}
-const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  const file = e.target.files?.[0];
-  if (!file) return;
-
-  const supabase = createClient();
-  
-  // завантажуємо файл в Storage
-  const { data, error } = await supabase.storage
-    .from('avatars')
-    .upload(`${user?.id}/${file.name}`, file, { upsert: true });
-
-  if (error) {
-    console.log(error);
-    return;
+  const handleSaveEmail = async () => {
+    console.log('newEmail:', newEmail)
+    const supabase = createClient()
+    const { error } = await supabase.auth.updateUser({
+      email: newEmail,
+    })
+    if (error) {
+      console.log(error)
+      return
+    }
+    setIsEmailFocused(false)
+    setNewEmail('')
+    router.refresh()
   }
+  const handleSavePassword = async () => {
+    const supabase = createClient()
+    await supabase.auth.updateUser({
+      password: newPassword,
+    })
+    setIsPasswordFocused(false)
+    setNewPassword('')
+    router.refresh()
+  }
+  const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
 
-  // отримуємо публічний URL
-  const { data: urlData } = supabase.storage
-    .from('avatars')
-    .getPublicUrl(`${user?.id}/${file.name}`);
+    const supabase = createClient()
 
-  // зберігаємо URL в user_metadata
-  await supabase.auth.updateUser({
-    data: { avatar_url: urlData.publicUrl }
-  });
+    // завантажуємо файл в Storage
+    const { error } = await supabase.storage
+      .from('avatars')
+      .upload(`${user?.id}/${file.name}`, file, { upsert: true })
 
-  router.refresh();
-}
+    if (error) {
+      console.log(error)
+      return
+    }
+
+    // отримуємо публічний URL
+    const { data: urlData } = supabase.storage
+      .from('avatars')
+      .getPublicUrl(`${user?.id}/${file.name}`)
+
+    // зберігаємо URL в user_metadata
+    await supabase.auth.updateUser({
+      data: { avatar_url: urlData.publicUrl },
+    })
+
+    router.refresh()
+  }
   return (
     <>
       <div className={s.link}>
@@ -158,7 +158,13 @@ const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
               <div className={`${s.ProfileOptions} ${inter.className}`}>
                 <div className={s.ProfileTop}>
                   <div className={s.Photo}>
-                    <img src={user?.user_metadata?.avatar_url || 'https://img.magnific.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette_719432-3512.jpg'} alt="" />
+                    <img
+                      src={
+                        user?.user_metadata?.avatar_url ||
+                        'https://img.magnific.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette_719432-3512.jpg'
+                      }
+                      alt=""
+                    />
                   </div>
                   <div className={s.DataBlock}>
                     <div className={s.ProfileNick}>
@@ -238,10 +244,10 @@ const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
                   </div>
                 </div>
                 <div className={s.Profilbottom2}>
-                  <Link className={s.SignInBtn} href={'sign-up'}>
+                  <Link className={s.SignInBtn} href={'sign-in'}>
                     Sign In
                   </Link>
-                  <Link className={s.SignUpBtn} href={'sign-in'}>
+                  <Link className={s.SignUpBtn} href={'sign-up'}>
                     Create Account
                   </Link>
                 </div>
@@ -343,26 +349,40 @@ const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
               </div>
             </div>
             <div className={s.Avatar}>
-  <div className={s.photoAvatarBlock}>
-    <div className={s.photoAvatar} onClick={() => avatarInputRef.current?.click()}>
-      <img src={user?.user_metadata?.avatar_url || 'https://img.magnific.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette_719432-3512.jpg'} alt="" />
-    </div>
-    <button className={s.Pgotik} onClick={() => avatarInputRef.current?.click()}>
-      <Camera size={11} />
-    </button>
-    <input
-      ref={avatarInputRef}
-      type="file"
-      accept="image/*"
-      className={s.hidden}
-      onChange={handleAvatarChange}
-    />
-  </div>
-  <div className={s.NickEmailBlock}>
-    <div className={s.Nick}>{user?.user_metadata?.username || user?.email}</div>
-    <div className={s.Email}>{user?.email}</div>
-  </div>
-</div>
+              <div className={s.photoAvatarBlock}>
+                <div
+                  className={s.photoAvatar}
+                  onClick={() => avatarInputRef.current?.click()}
+                >
+                  <img
+                    src={
+                      user?.user_metadata?.avatar_url ||
+                      'https://img.magnific.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette_719432-3512.jpg'
+                    }
+                    alt=""
+                  />
+                </div>
+                <button
+                  className={s.Pgotik}
+                  onClick={() => avatarInputRef.current?.click()}
+                >
+                  <Camera size={11} />
+                </button>
+                <input
+                  ref={avatarInputRef}
+                  type="file"
+                  accept="image/*"
+                  className={s.hidden}
+                  onChange={handleAvatarChange}
+                />
+              </div>
+              <div className={s.NickEmailBlock}>
+                <div className={s.Nick}>
+                  {user?.user_metadata?.username || user?.email}
+                </div>
+                <div className={s.Email}>{user?.email}</div>
+              </div>
+            </div>
             <div className={s.NickWords}>
               <UserRound size={18} className={s.OptiImg}></UserRound>
               <input
@@ -374,15 +394,18 @@ const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
               />
               {isNickFocused && (
                 <>
-                 <button className={s.yes} onClick={handleSaveNick}>
+                  <button className={s.yes} onClick={handleSaveNick}>
                     <Check size={16}></Check>
                   </button>
-                  <button className={s.no} onClick={() => {
-  setIsNickFocused(false);
-  setNewNick('');
-}}>
-  <X size={16} />
-</button>
+                  <button
+                    className={s.no}
+                    onClick={() => {
+                      setIsNickFocused(false)
+                      setNewNick('')
+                    }}
+                  >
+                    <X size={16} />
+                  </button>
                 </>
               )}
             </div>
@@ -393,20 +416,23 @@ const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
                 placeholder="Change email"
                 className={s.NickInput}
                 type="email"
-                 value={newEmail}
-  onChange={(e) => setNewEmail(e.target.value)}
+                value={newEmail}
+                onChange={(e) => setNewEmail(e.target.value)}
               />
               {isEmailFocused && (
                 <>
                   <button className={s.yes} onClick={handleSaveEmail}>
                     <Check size={16}></Check>
                   </button>
-                  <button className={s.no} onClick={() => {
-  setIsEmailFocused(false);
-  setNewEmail('');
-}}>
-  <X size={16} />
-</button>
+                  <button
+                    className={s.no}
+                    onClick={() => {
+                      setIsEmailFocused(false)
+                      setNewEmail('')
+                    }}
+                  >
+                    <X size={16} />
+                  </button>
                 </>
               )}
             </div>
@@ -418,19 +444,22 @@ const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
                 className={s.NickInput}
                 type="password"
                 value={newPassword}
-  onChange={(e) => setNewPassword(e.target.value)}
+                onChange={(e) => setNewPassword(e.target.value)}
               />
               {isPasswordFocused && (
                 <>
                   <button className={s.yes} onClick={handleSavePassword}>
                     <Check size={16}></Check>
                   </button>
-<button className={s.no} onClick={() => {
-  setIsPasswordFocused(false);
-  setNewPassword('');
-}}>
-  <X size={16} />
-</button>
+                  <button
+                    className={s.no}
+                    onClick={() => {
+                      setIsPasswordFocused(false)
+                      setNewPassword('')
+                    }}
+                  >
+                    <X size={16} />
+                  </button>
                 </>
               )}
             </div>

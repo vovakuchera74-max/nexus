@@ -30,18 +30,18 @@ A full-featured gaming e-commerce store built with Next.js 16, Supabase, and Typ
 
 ## 🛠️ Tech Stack
 
-| Category | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript |
-| Styling | SCSS Modules |
-| Database | Supabase (PostgreSQL) |
-| Auth | Supabase Auth + GitHub OAuth |
-| State | Zustand |
-| Forms | React Hook Form + Zod |
-| Icons | Lucide React, React Icons |
-| Testing | Jest + React Testing Library |
-| Deployment | Vercel |
+| Category   | Technology                   |
+| ---------- | ---------------------------- |
+| Framework  | Next.js 16 (App Router)      |
+| Language   | TypeScript                   |
+| Styling    | SCSS Modules                 |
+| Database   | Supabase (PostgreSQL)        |
+| Auth       | Supabase Auth + GitHub OAuth |
+| State      | Zustand                      |
+| Forms      | React Hook Form + Zod        |
+| Icons      | Lucide React, React Icons    |
+| Testing    | Jest + React Testing Library |
+| Deployment | Vercel                       |
 
 ---
 
@@ -79,11 +79,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🗄️ Database Schema
 
-| Table | Description |
-|---|---|
-| `products` | All store products with price, stock, rating |
+| Table        | Description                                    |
+| ------------ | ---------------------------------------------- |
+| `products`   | All store products with price, stock, rating   |
 | `categories` | Product categories (Consoles, Keyboards, etc.) |
-| `profiles` | User profiles with username and avatar |
+| `profiles`   | User profiles with username and avatar         |
 
 ---
 

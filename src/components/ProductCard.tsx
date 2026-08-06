@@ -1,7 +1,6 @@
 import { Product } from '@/types/Card'
 import s from '../styles/ProductCard.module.scss'
 import { Inter } from 'next/font/google'
-import { ShoppingCart } from 'lucide-react'
 import Stars from './Stars'
 import NewOrSale from './NewOrSale'
 import AddToCartButton from './AddToCartButton'
