@@ -1,0 +1,168 @@
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  gap: 24px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1300px;
+}
+
+.sidebarSkeleton {
+  width: 230px;
+  height: 700px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  background: rgb(18, 18, 30);
+  border-radius: 14px;
+}
+
+.gridSkeleton {
+  margin-top: 69px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cardSkeleton {
+  display: flex;
+  flex-direction: column;
+  background: rgb(18, 18, 30);
+  border-radius: 14px;
+  height: 470px;
+  overflow: hidden;
+}
+
+.cardImg {
+  height: 320px;
+}
+
+.cardLine {
+  height: 16px;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+.cardLineShort {
+  height: 16px;
+  width: 60%;
+  margin: 8px 12px;
+  border-radius: 4px;
+}
+
+// --- Card sub-blocks ---
+
+.cardCategoryRow {
+  display: flex;
+  padding: 10px;
+  gap: 8px;
+}
+
+.cardBrandTag {
+  width: 50px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.cardCategoryName {
+  width: 65px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.cardTitle {
+  width: 70%;
+  height: 16px;
+  margin: 0 12px 8px 12px;
+  border-radius: 4px;
+}
+
+.cardRating {
+  width: 110px;
+  height: 12px;
+  margin: 0 0 8px 12px;
+  border-radius: 4px;
+}
+
+.cardBuyRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px 15px 12px;
+  margin-top: auto;
+}
+
+.cardPrice {
+  width: 55px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.cardBtn {
+  width: 65px;
+  height: 28px;
+  border-radius: 10px;
+}
+
+// --- Анімація пульсації ---
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.skeletonTitle,
+.skeletonLine,
+.cardImg,
+.cardLine,
+.cardLineShort,
+.cardBrandTag,
+.cardCategoryName,
+.cardTitle,
+.cardRating,
+.cardPrice,
+.cardBtn {
+  background: rgba(168, 85, 247, 0.1);
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeletonTitle {
+  height: 20px;
+  width: 80px;
+  margin-bottom: 8px;
+}
+
+.skeletonLine {
+  height: 14px;
+}
+@media (max-width: 1100px) {
+  .gridSkeleton {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+@media (max-width: 800px) {
+  .gridSkeleton {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .sidebarSkeleton {
+    display: none;
+  }
+}

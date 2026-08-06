@@ -1,28 +1,27 @@
-
-.header{
-    display: flex;
-    width: 100%;
-    height: 70px;
-    justify-content: center;
-    align-items: center;
-    background-color:rgb(13, 13, 26);
-    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 11;
+.header {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(13, 13, 26);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 11;
 }
-.headerbox{
-display: flex;
-justify-content: space-around;
-padding: 15px 20px;
-width: 100%;
-max-width: 1400px;
-height: 100%;
+.headerbox {
+  display: flex;
+  justify-content: space-around;
+  gap: 7px;
+  padding: 15px 20px;
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
 }
 .orbitron {
   font-family: var(--font-orbitron);
 }
-
 
 .logo {
   display: flex;
@@ -34,7 +33,7 @@ height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #A855F7;
+  color: #a855f7;
   animation: shake 2s ease-in-out infinite;
 }
 
@@ -42,7 +41,7 @@ height: 100%;
   display: flex;
   font-size: 18px;
   font-weight: 600;
-  background: linear-gradient(90deg, #7F77DD, #C4B8F0, #534AB7, #7F77DD);
+  background: linear-gradient(90deg, #7f77dd, #c4b8f0, #534ab7, #7f77dd);
   background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -50,14 +49,49 @@ height: 100%;
 }
 
 @keyframes shake {
-  0%, 100% { transform: rotate(0deg); }
-  20% { transform: rotate(-8deg); }
-  40% { transform: rotate(8deg); }
-  60% { transform: rotate(-4deg); }
-  80% { transform: rotate(4deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  80% {
+    transform: rotate(4deg);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+@media (max-width: 800px) {
+  .name {
+    font-size: 16px;
+  }
+  .log {
+    width: 20px;
+    height: 20px;
+  }
+  .headerbox {
+    padding: 15px 10px;
+  }
+}
+@media (max-width: 600px) {
+  .name {
+    font-size: 14px;
+  }
+  .headerbox {
+    padding: 15px 7px;
+  }
 }
