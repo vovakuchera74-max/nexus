@@ -1,6 +1,6 @@
 'use client'
 import { SlidersHorizontal} from 'lucide-react'
-import s from '../styles/btnfilter.module.scss'
+import s from '../styles/Btnfilter.module.scss'
 import Sidebar from './Sidebar'
 import { useFilterPanelStore } from '@/store/FilterPanelStore'
 export default function Dropfilter({ product }: { product: number }) {

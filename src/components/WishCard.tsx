@@ -4,7 +4,7 @@ import type { Product } from '@/types/Card'
 import { Inter } from 'next/font/google'
 
 import { useCartStore } from '@/store/CartStore'
-import { useWishListStore } from '@/store/wishlistStore'
+import { useWishListStore } from '@/store/WishlistStore'
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],

@@ -1,6 +1,6 @@
 import type { Product } from '@/types/Card'
 import { supabase } from '@/lib/supabase'
-import s from '../styles/main.module.scss'
+import s from '../styles/Main.module.scss'
 import ProductCard from '@/components/ProductCard'
 import { Inter } from 'next/font/google'
 import SortDropdown from '@/components/SortDropdown'

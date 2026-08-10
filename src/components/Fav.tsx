@@ -2,7 +2,7 @@
 import s from '../styles/Fav.module.scss'
 import { Heart } from 'lucide-react'
 import type { Product } from '@/types/Card'
-import { useWishListStore } from '../store/wishlistStore'
+import { useWishListStore } from '../store/WishlistStore'
 export default function Fav({ product }: { product: Product }) {
   const toggleWish = useWishListStore((state) => state.toggleWish)
   const isFav = useWishListStore((state) =>

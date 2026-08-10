@@ -13,7 +13,7 @@ import {
 import CardCart from './CartCard'
 import { useCartStore } from '@/store/CartStore'
 import { Inter } from 'next/font/google'
-import { useWishListStore } from '@/store/wishlistStore'
+import { useWishListStore } from '@/store/WishlistStore'
 import WishCard from './WishCard'
 import { UserRound } from 'lucide-react'
 import Link from 'next/link'
