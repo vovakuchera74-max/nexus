@@ -1,5 +1,5 @@
 'use client'
-import s from '../styles/error.module.scss'
+import s from '../styles/Error.module.scss'
 import { RotateCcw } from 'lucide-react'
 export default function Error({ reset }: { reset: () => void }) {
   return (
@@ -21,5 +21,6 @@ export default function Error({ reset }: { reset: () => void }) {
         </div>
       </div>
     </div>
+    
   )
 }

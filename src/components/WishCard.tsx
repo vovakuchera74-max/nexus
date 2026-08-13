@@ -36,5 +36,6 @@ export default function WishCard({ wish }: { wish: Product }) {
         </div>
       </div>
     </div>
+    
   )
 }
