@@ -65,6 +65,68 @@ Create a `.env.local` file in the root:
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
+## 🗄️ Database Setup
+
+This project uses Supabase (PostgreSQL). To set up your own instance:
+
+### 1. Create the tables
+
+Run this in the Supabase SQL Editor:
+
+\`\`\`sql
+create table public.categories (
+  id uuid not null default gen_random_uuid (),
+  name text not null,
+  slug text not null,
+  created_at timestamp with time zone null default now(),
+  constraint categories_pkey primary key (id),
+  constraint categories_slug_key unique (slug)
+);
+
+create table public.products (
+  id uuid not null default gen_random_uuid (),
+  name text not null,
+  slug text not null,
+  description text null,
+  price numeric(10, 2) not null,
+  old_price numeric(10, 2) null,
+  brand text not null,
+  category_id uuid null,
+  image_url text not null,
+  rating numeric(2, 1) null default 0,
+  reviews_count integer null default 0,
+  stock integer null default 0,
+  is_new boolean null default false,
+  discount_percent integer null,
+  created_at timestamp with time zone null default now(),
+  constraint products_pkey primary key (id),
+  constraint products_slug_key unique (slug),
+  constraint products_category_id_fkey foreign key (category_id) references categories (id)
+);
+\`\`\`
+
+### 2. Enable RLS and policies
+
+Both tables have Row Level Security enabled with public read-only access:
+
+\`\`\`sql
+alter table public.categories enable row level security;
+alter table public.products enable row level security;
+
+create policy "Public can view categories" on public.categories
+  for select using (true);
+
+create policy "Public can view products" on public.products
+  for select using (true);
+\`\`\`
+
+### 3. User profiles
+
+User profile data (username, avatar) is stored in Supabase Auth's `user_metadata` — there is no separate `profiles` table.
+
+### 4. Storage (avatars)
+
+Create a public bucket named `avatars` in Storage for profile pictures.
 
 ### Run locally
 
@@ -76,15 +138,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🗄️ Database Schema
-
-| Table        | Description                                    |
-| ------------ | ---------------------------------------------- |
-| `products`   | All store products with price, stock, rating   |
-| `categories` | Product categories (Consoles, Keyboards, etc.) |
-| `profiles`   | User profiles with username and avatar         |
-
----
 
 ## 📁 Project Structure
 
