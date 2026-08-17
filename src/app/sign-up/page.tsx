@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Gamepad2, User, Mail} from 'lucide-react'
 import { Inter } from 'next/font/google'
 import { FiGithub } from 'react-icons/fi'
-
+import { CircleAlert } from 'lucide-react';
 import { IoLockClosedOutline } from 'react-icons/io5'
 import { Eye } from 'lucide-react'
 import { EyeOff } from 'lucide-react'
@@ -21,18 +21,21 @@ const inter = Inter({
 })
 
 export default function SignUp() {
-  const handleGitHub = async () => {
-    const supabase = createClient()
-    await supabase.auth.signInWithOAuth({
-      provider: 'github',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    })
+const handleGitHub = async () => {
+  setAuthError(null)
+  const supabase = createClient()
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: { redirectTo: `${window.location.origin}/auth/callback` },
+  })
+  if (error) {
+    setAuthError('Failed to sign in via GitHub. Please try again later.')
   }
+}
   const router = useRouter()
   const [EyeOpen, setEyeOpen] = useState(false)
   const [EyeOpenRep, setEyeOpenRep] = useState(false)
+  const [authError, setAuthError] = useState<string | null>(null)
   const {
     register,
     handleSubmit,
@@ -41,26 +44,30 @@ export default function SignUp() {
     mode: 'onTouched',
     resolver: zodResolver(signUp),
   })
-  const onSubmit = async (data: signUpValue) => {
-    const supabase = createClient()
+const onSubmit = async (data: signUpValue) => {
+  setAuthError(null)
+  const supabase = createClient()
 
-    const { error } = await supabase.auth.signUp({
-      email: data.email,
-      password: data.password,
-      options: {
-        data: {
-          username: data.username,
-        },
-      },
-    })
+  const { data: authData, error } = await supabase.auth.signUp({
+    email: data.email,
+    password: data.password,
+    options: {
+      data: { username: data.username },
+    },
+  })
 
-    if (error) {
-      console.log(error)
-      return
-    }
-
-    router.push('/') // ← тут, після успіху
+  if (error) {
+    setAuthError(error.message)
+    return
   }
+
+  if (authData.user && authData.user.identities?.length === 0) {
+    setAuthError('An account with this email already exists. Try signing in instead.')
+    return
+  }
+
+  router.push('/')
+}
 
   return (
     <div className={s.SingUpPage}>
@@ -201,6 +208,12 @@ export default function SignUp() {
           {errors.terms && (
             <span className={s.errorText}>{errors.terms.message}</span>
           )}
+                    {authError && (
+  <div className={s.authError}>
+    <CircleAlert size={16} />
+    {authError}
+  </div>
+)}
           <button className={s.Regbtn}>
             <div className={s.RegbtnText}>Create Account</div>
             <div className={s.ArrowFor}>

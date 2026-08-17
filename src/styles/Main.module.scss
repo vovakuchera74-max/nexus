@@ -70,3 +70,41 @@
     padding: 20px 5px;
   }
 }
+.emptyState{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+  gap: 8px;
+}
+.Emp{
+  display: flex;
+  color: rgb(196, 184, 240);
+  font-weight: 600;
+  font-size: 17.6px;
+}
+.Try{
+  display: flex;
+  color: rgb(107, 104, 144);
+  font-size: 14px;
+}
+.Clearr{
+  display: flex;
+  color: rgb(168, 85, 247);
+  margin-top: 8px;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 10px;
+  transition: all 0.2s ease-out;
+  &:hover{
+    border: 1px solid rgba(168, 85, 247, 0.6);
+    background-color: rgba(168, 85, 247, 0.12);
+    
+  }
+}
+.im{
+  display: flex;
+  color: rgb(61, 58, 96);
+}

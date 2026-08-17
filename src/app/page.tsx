@@ -7,6 +7,8 @@ import SortDropdown from '@/components/SortDropdown'
 import Sidebar from '@/components/Sidebar'
 import Dropfilter from '@/components/Dropfilter'
 import Header from '@/components/Header'
+import Link from 'next/link'
+import { SearchX } from 'lucide-react';
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -72,8 +74,46 @@ export default async function Home({
   if (brand) {
     query = query.in('brand', brand.split(','))
   }
-  const { data: products } = await query.returns<Product[]>()
-  if (!products) return
+const { data: products, error } = await query.returns<Product[]>()
+
+if (error) {
+  throw new Error(error.message)
+}
+
+if (!products || products.length === 0) {
+  return (
+     <>
+      <Header></Header>
+
+      <main className={s.main}>
+        <div className={s.content}>
+          <Sidebar product={products.length} size={false} />
+
+          <div className={s.ProductBlock}>
+            <div className={`${s.minifilter} ${inter.className}`}>
+              <div className={s.many}>
+                {products.length} <span>products</span>
+              </div>
+              <div className={s.Blockfil}>
+                <SortDropdown></SortDropdown>
+                <Dropfilter product={products.length}></Dropfilter>
+              </div>
+            </div>
+
+
+  <div className={s.emptyState}>
+    <SearchX size={48} className={s.im}/>
+    <div className={s.Emp}>No products found</div>
+    <div className={`${s.Try} ${inter.className}`}>Try adjusting your filters or search</div>
+    <Link className={`${s.Clearr} ${inter.className}`} href="/">Clear filters</Link>
+  </div>
+
+          </div>
+        </div>
+      </main>
+    </>
+  )
+}
 
   return (
     <>
