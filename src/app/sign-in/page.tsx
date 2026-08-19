@@ -20,7 +20,7 @@ const inter = Inter({
   weight: ['400', '500'],
 })
 
-export default function SignUp() {
+export default function SignIn() {
 const handleGitHub = async () => {
   setAuthError(null)
   const supabase = createClient()
@@ -107,7 +107,7 @@ const onSubmit = async (data: signInValue) => {
               <input
                 {...register('email')}
                 className={s.OptiInput}
-                type="text"
+                type="email"
                 placeholder="User@nexusgg.com"
               />
             </label>

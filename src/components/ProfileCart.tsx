@@ -46,6 +46,7 @@ export default function HeaderActions({ user }: { user: User | null }) {
   const wish = useWishListStore((state) => state.Wish)
   const getTotalPrice = useCartStore((state) => state.getTotalPrice)
   const getTotalCount = useCartStore((state) => state.getTotalCount)
+  const hasHydrated = useCartStore((state) => state.hasHydrated)
   const handleSignOut = async () => {
     const supabase = createClient()
     await supabase.auth.signOut()
@@ -129,11 +130,11 @@ export default function HeaderActions({ user }: { user: User | null }) {
           <ShoppingCart size={20}></ShoppingCart>
           <div className={s.textWrapper}>
             <span className={s.Cart}>Cart</span>
-            {getTotalCount() > 0 && (
-              <span className={`${s.badgge} ${inter.className}`}>
-                {getTotalCount()}
-              </span>
-            )}
+            {hasHydrated && getTotalCount() > 0 && (
+  <span className={`${s.badgge} ${inter.className}`}>
+    {getTotalCount()}
+  </span>
+)}
           </div>
         </button>
 

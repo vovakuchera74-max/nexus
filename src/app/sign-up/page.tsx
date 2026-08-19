@@ -132,7 +132,7 @@ const onSubmit = async (data: signUpValue) => {
               <input
                 {...register('email')}
                 className={s.OptiInput}
-                type="text"
+                type="email"
                 placeholder="User@nexusgg.com"
               />
             </label>
