@@ -245,10 +245,10 @@ export default function HeaderActions({ user }: { user: User | null }) {
                   </div>
                 </div>
                 <div className={s.Profilbottom2}>
-                  <Link className={s.SignInBtn} href={'sign-in'}>
+                  <Link className={s.SignInBtn} href={'/sign-in'}>
                     Sign In
                   </Link>
-                  <Link className={s.SignUpBtn} href={'sign-up'}>
+                  <Link className={s.SignUpBtn} href={'/sign-up'}>
                     Create Account
                   </Link>
                 </div>

@@ -77,7 +77,7 @@ const onSubmit = async (data: signInValue) => {
         <div className={s.SingUpWords}>Sign In</div>
         <div className={`${s.SingUpLink} ${inter.className}`}>
           <div className={s.Already}>Don&apos;t have an account?</div>
-          <Link href={'sign-up'} className={s.sign}>
+          <Link href={'/sign-up'} className={s.sign}>
             Create one
           </Link>
         </div>
