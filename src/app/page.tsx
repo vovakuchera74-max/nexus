@@ -1,5 +1,5 @@
 import type { Product } from '@/types/Card'
-import { supabase } from '@/lib/supabase'
+import { createServerSupabase } from '@/lib/supabase-server'
 import s from '../styles/Main.module.scss'
 import ProductCard from '@/components/ProductCard'
 import { Inter } from 'next/font/google'
@@ -36,6 +36,7 @@ export default async function Home({
     maxPrice,
     inStock,
   } = await searchParams
+   const supabase = await createServerSupabase()
   const sort = sortParam || 'featured'
   let query = supabase.from('products').select('*, categories(name)')
   if (category) {
