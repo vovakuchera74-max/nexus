@@ -296,14 +296,12 @@
 }
 .Photo {
   display: flex;
+  position: relative;
   border-radius: 50%;
   object-fit: cover;
   height: 50px;
   width: 50px;
-  img {
-    border-radius: 50%;
-    object-fit: cover;
-  }
+
 }
 .DataBlock {
   display: flex;

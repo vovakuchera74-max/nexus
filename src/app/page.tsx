@@ -136,8 +136,8 @@ if (!products || products.length === 0) {
             </div>
 
             <div className={s.productsGrid}>
-              {products.map((product) => (
-                <ProductCard key={product.id} product={product} view={view} />
+              {products.map((product , index) => (
+                <ProductCard key={product.id} product={product} view={view} priority={index < 6}/>
               ))}
             </div>
           </div>

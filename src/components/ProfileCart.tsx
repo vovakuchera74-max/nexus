@@ -24,7 +24,8 @@ import { Check } from 'lucide-react'
 import { Mail } from 'lucide-react'
 import { IoLockClosedOutline } from 'react-icons/io5'
 import { Camera } from 'lucide-react'
-
+import Image from 'next/image'
+import { object } from 'zod'
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -159,13 +160,13 @@ export default function HeaderActions({ user }: { user: User | null }) {
               <div className={`${s.ProfileOptions} ${inter.className}`}>
                 <div className={s.ProfileTop}>
                   <div className={s.Photo}>
-                    <img
-                      src={
-                        user?.user_metadata?.avatar_url ||
-                        'https://img.magnific.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette_719432-3512.jpg'
-                      }
-                      alt=""
-                    />
+                    <Image
+                  fill
+                  sizes='50px'
+                    src={user?.user_metadata?.avatar_url || '/default.avif'}
+                    alt=""
+                    style={{ objectFit: 'cover', borderRadius: '50%' }}
+                  />
                   </div>
                   <div className={s.DataBlock}>
                     <div className={s.ProfileNick}>
@@ -355,12 +356,12 @@ export default function HeaderActions({ user }: { user: User | null }) {
                   className={s.photoAvatar}
                   onClick={() => avatarInputRef.current?.click()}
                 >
-                  <img
-                    src={
-                      user?.user_metadata?.avatar_url ||
-                      'https://img.magnific.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette_719432-3512.jpg'
-                    }
+                  <Image
+                  fill
+                  sizes='90px'
+                    src={user?.user_metadata?.avatar_url || '/default.avif'}
                     alt=""
+                    style={{ objectFit: 'cover', borderRadius: '50%' }}
                   />
                 </div>
                 <button

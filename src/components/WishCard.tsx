@@ -2,7 +2,7 @@ import s from '../styles/CartCard.module.scss'
 import { X, ShoppingCart } from 'lucide-react'
 import type { Product } from '@/types/Card'
 import { Inter } from 'next/font/google'
-
+import Image from 'next/image'
 import { useCartStore } from '@/store/CartStore'
 import { useWishListStore } from '@/store/WishlistStore'
 const inter = Inter({
@@ -16,8 +16,14 @@ export default function WishCard({ wish }: { wish: Product }) {
   return (
     <div className={`${s.Card} ${inter.className}`}>
       <div className={s.Cartimg}>
-        <img src={wish.image_url} alt="" />{' '}
-      </div>
+  <Image
+    src={wish.image_url}
+    alt={wish.name}
+    fill
+    sizes="70px"
+    style={{ objectFit: 'cover' }}
+  />
+</div>
       <div className={s.InfoBlock}>
         <div className={s.Brend}>{wish.brand}</div>
         <div className={s.title}>{wish.name}</div>

@@ -2,6 +2,7 @@ import s from '../styles/CartCard.module.scss'
 import { Trash2 } from 'lucide-react'
 import type { Product } from '@/types/Card'
 import { Inter } from 'next/font/google'
+import Image from 'next/image'
 interface CartItem extends Product {
   quantity: number
 }
@@ -16,9 +17,15 @@ export default function CardCart({ item }: { item: CartItem }) {
 
   return (
     <div className={`${s.Card} ${inter.className}`}>
-      <div className={s.Cartimg}>
-        <img src={item.image_url} alt="" />{' '}
-      </div>
+<div className={s.Cartimg}>
+  <Image
+    src={item.image_url}
+    alt={item.name}
+    fill
+    sizes="70px"
+    style={{ objectFit: 'cover' }}
+  />
+</div>
       <div className={s.InfoBlock}>
         <div className={s.Brend}>{item.brand}</div>
         <div className={s.title}>{item.name}</div>

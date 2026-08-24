@@ -5,6 +5,7 @@ import Stars from './Stars'
 import NewOrSale from './NewOrSale'
 import AddToCartButton from './AddToCartButton'
 import Fav from './Fav'
+import Image from 'next/image'
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -13,9 +14,11 @@ const inter = Inter({
 export default function ProductCard({
   product,
   view,
+  priority
 }: {
   product: Product
   view?: string
+  priority:boolean
 }) {
   return (
     <div className={`${s.ProductCard} ${view === 'list' ? s.listCard : ''}`}>
@@ -27,7 +30,8 @@ export default function ProductCard({
           ></NewOrSale>
           <Fav product={product} />
         </div>
-        <img src={product.image_url} alt={product.name} />
+        <Image fill src={product.image_url} alt={product.name} priority={priority} sizes="(max-width: 768px) 50vw, 25vw"
+  style={{ objectFit: 'cover' }}/>
       </div>
       <div className={`${s.category} ${inter.className}`}>
         <span className={s.brand}>{product.brand}</span>
