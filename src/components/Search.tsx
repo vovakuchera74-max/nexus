@@ -3,14 +3,14 @@ import s from '../styles/Search.module.scss'
 import { Search, ArrowLeft } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useDebonce } from '@/hooks/useDebounce'
+import { useDebounce } from '@/hooks/useDebounce'
 export function SearchInput() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [searchValue, setSearchValue] = useState(
     searchParams.get('search') || ''
   )
-  const debouncedValue = useDebonce(searchValue, 500)
+  const debouncedValue = useDebounce(searchValue, 500)
   const [IsSearchOpen, setIsSearchOpen] = useState(false)
 
   useEffect(() => {

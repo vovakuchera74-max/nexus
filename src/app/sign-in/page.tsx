@@ -1,5 +1,5 @@
 'use client'
-import s from '../../styles/SignIn.module.scss'
+import s from '../../styles/AuthForm.module.scss'
 import Link from 'next/link'
 import { CircleAlert } from 'lucide-react';
 import { Gamepad2,Mail} from 'lucide-react'
@@ -60,13 +60,13 @@ const onSubmit = async (data: signInValue) => {
 }
 
   return (
-    <div className={s.SingUpPage}>
+    <div className={s.AuthPage}>
       <div className={`${s.corner} ${s.cornerTopLeft}`}></div>
       <div className={`${s.corner} ${s.cornerTopRight}`}></div>
       <div className={`${s.corner} ${s.cornerBottomLeft}`}></div>
       <div className={`${s.corner} ${s.cornerBottomRight}`}></div>
-      <div className={s.SingUpBlock}>
-        <Link href={'/'} className={s.SingUpLogo}>
+      <div className={s.AuthBlock}>
+        <Link href={'/'} className={s.AuthLogo}>
           <div className={s.log}>
             <Gamepad2 size={20} />
           </div>
@@ -74,14 +74,14 @@ const onSubmit = async (data: signInValue) => {
             NEXUS <span className={s.gg}>GG</span>
           </div>
         </Link>
-        <div className={s.SingUpWords}>Sign In</div>
-        <div className={`${s.SingUpLink} ${inter.className}`}>
+        <div className={s.AuthWords}>Sign In</div>
+        <div className={`${s.AuthLink} ${inter.className}`}>
           <div className={s.Already}>Don&apos;t have an account?</div>
           <Link href={'/sign-up'} className={s.sign}>
             Create one
           </Link>
         </div>
-        <div className={`${s.SingUpСhoice} ${inter.className}`}>
+        <div className={`${s.AuthChoice} ${inter.className}`}>
           <div className={s.GitBlock} onClick={handleGitHub}>
             <div className={s.GitImg}>
               <FiGithub size={16} />
@@ -89,14 +89,14 @@ const onSubmit = async (data: signInValue) => {
             <div className={s.GitWords}>GitHub</div>
           </div>
         </div>
-        <div className={`${s.SingUpBorder} ${inter.className}`}>
+        <div className={`${s.AuthBorder} ${inter.className}`}>
           <div className={s.Line}></div>
           <div className={s.Words}>or with email</div>
           <div className={s.Line}></div>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className={`${s.SingUpBlockBottom} ${inter.className}`}
+          className={`${s.AuthBlockBottom} ${inter.className}`}
         >
           <div className={s.OptiBlock}>
             <div className={s.Optiname}>Email</div>

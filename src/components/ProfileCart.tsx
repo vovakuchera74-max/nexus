@@ -207,12 +207,12 @@ export default function HeaderActions({ user }: { user: User | null }) {
                   </div>
                 </div>
                 <div onClick={handleSignOut} className={s.Profilbottom}>
-                  <div className={s.SingOutIcon}>
-                    <LogOut size={16}></LogOut>{' '}
-                  </div>
-                  <Link href={'/'} className={s.SingOutWord}>
-                    Sing Out
-                  </Link>
+                  <div className={s.SignOutIcon}>
+  <LogOut size={16}></LogOut>{' '}
+</div>
+                  <Link href={'/'} className={s.SignOutWord}>
+  Sign Out
+</Link>
                 </div>
               </div>
             ) : (
