@@ -6,38 +6,26 @@ import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useFilterPanelStore } from '@/store/FilterPanelStore'
 
-const categories = [
-  'Consoles',
-  'Controllers',
-  'Peripherals',
-  'Keyboards',
-  'Headsets',
-  'Monitors',
-  'Laptops',
-  'Accessories',
-]
-const brands = [
-  'Sony',
-  'Microsoft',
-  'Razer',
-  'Corsair',
-  'HyperX',
-  'Logitech',
-  'ASUS',
-  'MSI',
-  'SteelSeries',
-  'Elgato',
-]
+
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500'],
 })
+interface Category {
+  id: string
+  name: string
+  slug: string
+}
 export default function Sidebar({
   size,
   product,
+  categories,
+  brands,
 }: {
   size: boolean
   product: number
+  categories: Category[]
+  brands: string[]
 }) {
   const { close } = useFilterPanelStore()
   const searchParams = useSearchParams()
@@ -144,17 +132,17 @@ export default function Sidebar({
         <div className={s.Cat}>Category</div>
         <div className={s.OptionsCat}>
           {categories.map((cat) => (
-            <label key={cat} className={s.checkboxLabel}>
-              <input
-                type="checkbox"
-                className={s.checkboxInput}
-                onChange={() => toggleCategory(cat.toLowerCase())}
-                checked={selectedCategories.includes(cat.toLowerCase())}
-              />
-              <span className={s.checkboxCustom}></span>
-              <span className={s.checkboxText}>{cat}</span>
-            </label>
-          ))}
+  <label key={cat.id} className={s.checkboxLabel}>
+    <input
+      type="checkbox"
+      className={s.checkboxInput}
+      onChange={() => toggleCategory(cat.slug)}
+      checked={selectedCategories.includes(cat.slug)}
+    />
+    <span className={s.checkboxCustom}></span>
+    <span className={s.checkboxText}>{cat.name}</span>
+  </label>
+))}
         </div>
       </div>
 

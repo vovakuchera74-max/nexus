@@ -80,6 +80,13 @@ const { data: products, error } = await query.returns<Product[]>()
 if (error) {
   throw new Error(error.message)
 }
+const [{ data: categoriesData }, { data: brandRows }] = await Promise.all([
+  supabase.from('categories').select('id, name, slug').order('name'),
+  supabase.from('products').select('brand'),
+])
+
+const categories = categoriesData ?? []
+const brands = Array.from(new Set((brandRows ?? []).map((p) => p.brand))).sort()
 
 if (!products || products.length === 0) {
   return (
@@ -88,7 +95,7 @@ if (!products || products.length === 0) {
 
       <main className={s.main}>
         <div className={s.content}>
-          <Sidebar product={products.length} size={false} />
+          <Sidebar categories={categories} brands={brands} product={products.length} size={false} />
 
           <div className={s.ProductBlock}>
             <div className={`${s.minifilter} ${inter.className}`}>
@@ -97,7 +104,7 @@ if (!products || products.length === 0) {
               </div>
               <div className={s.Blockfil}>
                 <SortDropdown></SortDropdown>
-                <Dropfilter product={products.length}></Dropfilter>
+                <Dropfilter categories={categories} brands={brands} product={products.length}></Dropfilter>
               </div>
             </div>
 
@@ -122,7 +129,7 @@ if (!products || products.length === 0) {
 
       <main className={s.main}>
         <div className={s.content}>
-          <Sidebar product={products.length} size={false} />
+          <Sidebar categories={categories} brands={brands} product={products.length} size={false} />
 
           <div className={s.ProductBlock}>
             <div className={`${s.minifilter} ${inter.className}`}>
@@ -131,7 +138,7 @@ if (!products || products.length === 0) {
               </div>
               <div className={s.Blockfil}>
                 <SortDropdown></SortDropdown>
-                <Dropfilter product={products.length}></Dropfilter>
+                <Dropfilter categories={categories} brands={brands} product={products.length}></Dropfilter>
               </div>
             </div>
 
