@@ -3,7 +3,6 @@ import s from '../../styles/AuthForm.module.scss'
 import Link from 'next/link'
 import { CircleAlert } from 'lucide-react';
 import { Gamepad2,Mail} from 'lucide-react'
-import { Inter } from 'next/font/google'
 import { FiGithub } from 'react-icons/fi'
 import { IoLockClosedOutline } from 'react-icons/io5'
 import { Eye } from 'lucide-react'
@@ -15,10 +14,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn, signInValue } from '../../validations/signInSchema'
 import { createClient } from '@/lib/supabase-browser'
 import { useRouter } from 'next/navigation'
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-})
+
 
 export default function SignIn() {
 const handleGitHub = async () => {
@@ -75,13 +71,13 @@ const onSubmit = async (data: signInValue) => {
           </div>
         </Link>
         <div className={s.AuthWords}>Sign In</div>
-        <div className={`${s.AuthLink} ${inter.className}`}>
+        <div className={s.AuthLink}>
           <div className={s.Already}>Don&apos;t have an account?</div>
           <Link href={'/sign-up'} className={s.sign}>
             Create one
           </Link>
         </div>
-        <div className={`${s.AuthChoice} ${inter.className}`}>
+        <div className={s.AuthChoice}>
           <div className={s.GitBlock} onClick={handleGitHub}>
             <div className={s.GitImg}>
               <FiGithub size={16} />
@@ -89,14 +85,14 @@ const onSubmit = async (data: signInValue) => {
             <div className={s.GitWords}>GitHub</div>
           </div>
         </div>
-        <div className={`${s.AuthBorder} ${inter.className}`}>
+        <div className={s.AuthBorder}>
           <div className={s.Line}></div>
           <div className={s.Words}>or with email</div>
           <div className={s.Line}></div>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className={`${s.AuthBlockBottom} ${inter.className}`}
+          className={s.AuthBlockBottom}
         >
           <div className={s.OptiBlock}>
             <div className={s.Optiname}>Email</div>
@@ -152,7 +148,7 @@ const onSubmit = async (data: signInValue) => {
             </div>
           </button>
         </form>
-        <div className={`${s.ConfirmOpt} ${inter.className}`}>
+        <div className={s.ConfirmOpt}>
           By signing in you agree to<span className={s.someText1}>Terms</span>{' '}
           and <span className={s.someText2}>Privacy Policy</span>
         </div>

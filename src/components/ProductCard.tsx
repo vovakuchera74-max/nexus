@@ -1,15 +1,11 @@
 import { Product } from '@/types/Card'
 import s from '../styles/ProductCard.module.scss'
-import { Inter } from 'next/font/google'
 import Stars from './Stars'
 import NewOrSale from './NewOrSale'
 import AddToCartButton from './AddToCartButton'
 import Fav from './Fav'
 import Image from 'next/image'
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-})
+
 
 export default function ProductCard({
   product,
@@ -23,23 +19,23 @@ export default function ProductCard({
   return (
     <div className={`${s.ProductCard} ${view === 'list' ? s.listCard : ''}`}>
       <div className={s.imgBlock}>
-        <div className={`${inter.className}`}>
+        
           <NewOrSale
             isNew={product.is_new}
             isSele={product.discount_percent}
           ></NewOrSale>
           <Fav product={product} />
-        </div>
+        
         <Image fill src={product.image_url} alt={product.name} priority={priority} sizes="(max-width: 768px) 50vw, 25vw"
   style={{ objectFit: 'cover' }}/>
       </div>
-      <div className={`${s.category} ${inter.className}`}>
+      <div className={s.category}>
         <span className={s.brand}>{product.brand}</span>
         <span className={s.categoryName}>{product.categories?.name}</span>
       </div>
       <div className={s.ItemName}>{product.name}</div>
 
-      <div className={`${s.raitingBlock} ${inter.className}`}>
+      <div className={s.raitingBlock}>
         <div className={s.stars}>
           <Stars rating={product.rating}></Stars>
         </div>
@@ -48,7 +44,7 @@ export default function ProductCard({
         </div>
       </div>
 
-      <div className={`${s.buyBlock} ${inter.className}`}>
+      <div className={s.buyBlock}>
         <div className={s.priceBlock}>
           <span className={s.price}>${product.price}</span>
           {product.old_price && (

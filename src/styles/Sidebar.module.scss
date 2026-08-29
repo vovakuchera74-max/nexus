@@ -110,15 +110,18 @@
   display: flex;
   flex-direction: column;
   margin-top: 5px;
+  font-family: var(--font-inter);
 }
 .CategoryFilter {
   display: flex;
   flex-direction: column;
+  font-family: var(--font-inter);
 }
 .PriceFilter {
   display: flex;
   margin-top: 5px;
   flex-direction: column;
+  font-family: var(--font-inter);
 }
 .curentPrice {
   display: flex;
@@ -203,6 +206,7 @@
   font-size: 14px;
   color: rgb(196, 184, 240);
   font-weight: 500;
+  font-family: var(--font-inter);
 }
 .resetALL {
   display: flex;
@@ -211,6 +215,7 @@
   font-weight: 500;
   border-bottom: rgba(168, 85, 247, 0.15) 1px solid;
   cursor: pointer;
+  font-family: var(--font-inter);
 }
 @media (max-width: 800px) {
   .filters {

@@ -2,7 +2,6 @@
 import s from '../../styles/AuthForm.module.scss'
 import Link from 'next/link'
 import { Gamepad2, User, Mail} from 'lucide-react'
-import { Inter } from 'next/font/google'
 import { FiGithub } from 'react-icons/fi'
 import { CircleAlert } from 'lucide-react';
 import { IoLockClosedOutline } from 'react-icons/io5'
@@ -15,10 +14,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { signUp, signUpValue } from '../../validations/signUpSchema'
 import { createClient } from '@/lib/supabase-browser'
 import { useRouter } from 'next/navigation'
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-})
+
 
 export default function SignUp() {
 const handleGitHub = async () => {
@@ -85,13 +81,13 @@ const onSubmit = async (data: signUpValue) => {
           </div>
         </Link>
         <div className={s.AuthWords}>Create Account</div>
-        <div className={`${s.AuthLink} ${inter.className}`}>
+        <div className={s.AuthLink}>
           <div className={s.Already}>Already a member?</div>
           <Link href={'/sign-in'} className={s.sign}>
             Sign in
           </Link>
         </div>
-        <div className={`${s.AuthChoice} ${inter.className}`}>
+        <div className={s.AuthChoice}>
           <div className={s.GitBlock} onClick={handleGitHub}>
             <div className={s.GitImg}>
               <FiGithub size={16} />
@@ -99,14 +95,14 @@ const onSubmit = async (data: signUpValue) => {
             <div className={s.GitWords}>GitHub</div>
           </div>
         </div>
-        <div className={`${s.AuthBorder} ${inter.className}`}>
+        <div className={s.AuthBorder}>
           <div className={s.Line}></div>
           <div className={s.Words}>or with email</div>
           <div className={s.Line}></div>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className={`${s.AuthBlockBottom} ${inter.className}`}
+          className={s.AuthBlockBottom}
         >
           <div className={s.OptiBlock}>
             <div className={s.Optiname}>Username</div>

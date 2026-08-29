@@ -13,6 +13,13 @@ const orbitron = Orbitron({
   weight: ['700'],
   variable: '--font-orbitron',
 })
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-inter',
+})
+
 export const metadata: Metadata = {
   title: 'Nexus',
   description: 'Gaming store',
@@ -25,7 +32,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${rajdhani.variable} ${orbitron.variable}`}>
+      <body
+        className={`${rajdhani.variable} ${orbitron.variable} ${inter.variable}`}
+      >
         {children}
       </body>
     </html>

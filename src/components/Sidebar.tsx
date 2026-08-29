@@ -1,5 +1,4 @@
 'use client'
-import { Inter } from 'next/font/google'
 import s from '../styles/Sidebar.module.scss'
 import { SlidersHorizontal, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
@@ -7,10 +6,6 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useFilterPanelStore } from '@/store/FilterPanelStore'
 
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-})
 interface Category {
   id: string
   name: string
@@ -121,14 +116,14 @@ export default function Sidebar({
         </div>
         {hasFilters && (
           <div
-            className={`${s.resetALL} ${inter.className}`}
+            className={s.resetALL}
             onClick={() => resetFilters()}
           >
             Reset all
           </div>
         )}
       </div>
-      <div className={`${s.CategoryFilter} ${inter.className}`}>
+      <div className={s.CategoryFilter}>
         <div className={s.Cat}>Category</div>
         <div className={s.OptionsCat}>
           {categories.map((cat) => (
@@ -148,7 +143,7 @@ export default function Sidebar({
 
       <div className={s.borde}></div>
 
-      <div className={`${s.BrandFilter} ${inter.className}`}>
+      <div className={s.BrandFilter}>
         <div className={s.Cat}>Brand</div>
         <div className={s.OptionsCat}>
           {brands.map((brand) => (
@@ -167,7 +162,7 @@ export default function Sidebar({
       </div>
       <div className={s.borde}></div>
 
-      <div className={`${s.PriceFilter} ${inter.className}`}>
+      <div className={s.PriceFilter}>
         <div className={s.curentPrice}>
           <div className={s.MaxPrice}>Max Price</div>
           <div className={s.curentP}> ${IsPrice.toLocaleString()}</div>
@@ -198,7 +193,7 @@ export default function Sidebar({
           onChange={toggleInStock}
         />
         <span className={s.toggleSwitch}></span>
-        <span className={`${s.toggleText} ${inter.className}`}>
+        <span className={s.toggleText}>
           In stock only
         </span>
       </label>

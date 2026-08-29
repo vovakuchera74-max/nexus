@@ -1,22 +1,19 @@
 import s from '../styles/CartCard.module.scss'
 import { Trash2 } from 'lucide-react'
 import type { Product } from '@/types/Card'
-import { Inter } from 'next/font/google'
+
 import Image from 'next/image'
 interface CartItem extends Product {
   quantity: number
 }
 
 import { useCartStore } from '@/store/CartStore'
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-})
+
 export default function CardCart({ item }: { item: CartItem }) {
   const removeItem = useCartStore((state) => state.removeItem)
 
   return (
-    <div className={`${s.Card} ${inter.className}`}>
+    <div className={s.Card}>
 <div className={s.Cartimg}>
   <Image
     src={item.image_url}

@@ -12,7 +12,6 @@ import {
 } from 'lucide-react'
 import CardCart from './CartCard'
 import { useCartStore } from '@/store/CartStore'
-import { Inter } from 'next/font/google'
 import { useWishListStore } from '@/store/WishlistStore'
 import WishCard from './WishCard'
 import { UserRound } from 'lucide-react'
@@ -26,10 +25,7 @@ import { IoLockClosedOutline } from 'react-icons/io5'
 import { Camera } from 'lucide-react'
 import Image from 'next/image'
 import { object } from 'zod'
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-})
+
 export default function HeaderActions({ user }: { user: User | null }) {
   const avatarInputRef = useRef<HTMLInputElement>(null)
   const [newEmail, setNewEmail] = useState('')
@@ -121,7 +117,7 @@ export default function HeaderActions({ user }: { user: User | null }) {
           <div className={s.textWrapper}>
             <span className={s.Cart}>WishList</span>
             {wish.length > 0 && (
-              <span className={`${s.badgge} ${inter.className}`}>
+              <span className={s.badgge}>
                 {wish.length}
               </span>
             )}
@@ -132,7 +128,7 @@ export default function HeaderActions({ user }: { user: User | null }) {
           <div className={s.textWrapper}>
             <span className={s.Cart}>Cart</span>
             {hasHydrated && getTotalCount() > 0 && (
-  <span className={`${s.badgge} ${inter.className}`}>
+  <span className={s.badgge}>
     {getTotalCount()}
   </span>
 )}
@@ -157,7 +153,7 @@ export default function HeaderActions({ user }: { user: User | null }) {
 
           {isProfileOpen &&
             (user ? (
-              <div className={`${s.ProfileOptions} ${inter.className}`}>
+              <div className={s.ProfileOptions}>
                 <div className={s.ProfileTop}>
                   <div className={s.Photo}>
                     <Image
@@ -216,7 +212,7 @@ export default function HeaderActions({ user }: { user: User | null }) {
                 </div>
               </div>
             ) : (
-              <div className={`${s.ProfileOptions} ${inter.className}`}>
+              <div className={s.ProfileOptions}>
                 <div className={s.ProfileTop}>
                   <div className={s.DataBlock}>
                     <div className={s.ProfilHellow}>Welcome!</div>
@@ -290,7 +286,7 @@ export default function HeaderActions({ user }: { user: User | null }) {
                 <div className={s.futter}>
                   <div className={s.price}>
                     <div className={s.word}>Subtotal</div>
-                    <div className={`${s.totalPrice} ${inter.className}`}>
+                    <div className={s.totalPrice}>
                       ${getTotalPrice().toFixed(2)}
                     </div>
                   </div>
@@ -343,7 +339,7 @@ export default function HeaderActions({ user }: { user: User | null }) {
             className={s.Overlay3}
             onClick={() => setIsSettingsOpen(false)}
           ></div>
-          <div className={`${s.SettingsBlock} ${inter.className}`}>
+          <div className={s.SettingsBlock}>
             <div className={s.CloseBlock}>
               <div className={s.AccountSettings}>Account Settings</div>
               <div className={s.Xbtn2} onClick={() => setIsSettingsOpen(false)}>

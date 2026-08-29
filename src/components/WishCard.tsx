@@ -1,20 +1,16 @@
 import s from '../styles/CartCard.module.scss'
 import { X, ShoppingCart } from 'lucide-react'
 import type { Product } from '@/types/Card'
-import { Inter } from 'next/font/google'
 import Image from 'next/image'
 import { useCartStore } from '@/store/CartStore'
 import { useWishListStore } from '@/store/WishlistStore'
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-})
+
 export default function WishCard({ wish }: { wish: Product }) {
   const removeWish = useWishListStore((state) => state.removeItem)
   const Add = useCartStore((state) => state.addItem)
 
   return (
-    <div className={`${s.Card} ${inter.className}`}>
+    <div className={s.Card}>
       <div className={s.Cartimg}>
   <Image
     src={wish.image_url}

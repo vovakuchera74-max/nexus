@@ -2,17 +2,13 @@ import type { Product } from '@/types/Card'
 import { createServerSupabase } from '@/lib/supabase-server'
 import s from '../styles/Main.module.scss'
 import ProductCard from '@/components/ProductCard'
-import { Inter } from 'next/font/google'
 import SortDropdown from '@/components/SortDropdown'
 import Sidebar from '@/components/Sidebar'
 import Dropfilter from '@/components/Dropfilter'
 import Header from '@/components/Header'
 import Link from 'next/link'
 import { SearchX } from 'lucide-react';
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-})
+
 
 export default async function Home({
   searchParams,
@@ -98,7 +94,7 @@ if (!products || products.length === 0) {
           <Sidebar categories={categories} brands={brands} product={products.length} size={false} />
 
           <div className={s.ProductBlock}>
-            <div className={`${s.minifilter} ${inter.className}`}>
+            <div className={s.minifilter}>
               <div className={s.many}>
                 {products.length} <span>products</span>
               </div>
@@ -112,8 +108,8 @@ if (!products || products.length === 0) {
   <div className={s.emptyState}>
     <SearchX size={48} className={s.im}/>
     <div className={s.Emp}>No products found</div>
-    <div className={`${s.Try} ${inter.className}`}>Try adjusting your filters or search</div>
-    <Link className={`${s.Clearr} ${inter.className}`} href="/">Clear filters</Link>
+    <div className={s.Try}>Try adjusting your filters or search</div>
+    <Link className={s.Clearr} href="/">Clear filters</Link>
   </div>
 
           </div>
@@ -132,7 +128,7 @@ if (!products || products.length === 0) {
           <Sidebar categories={categories} brands={brands} product={products.length} size={false} />
 
           <div className={s.ProductBlock}>
-            <div className={`${s.minifilter} ${inter.className}`}>
+            <div className={s.minifilter}>
               <div className={s.many}>
                 {products.length} <span>products</span>
               </div>

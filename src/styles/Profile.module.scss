@@ -127,6 +127,7 @@
   color: rgb(240, 238, 255);
   font-size: 14px;
   font-weight: 700;
+  font-family: var(--font-inter);
 }
 .price {
   display: flex;
@@ -214,6 +215,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-inter);
 }
 .Profile {
   display: flex;
@@ -271,10 +273,10 @@
   border-radius: 10px;
   top: 45px;
   right: 0px;
-
-  transform-origin: top right; // бо випадає з-під кнопки Profile, яка справа
+  transform-origin: top right;
   animation: dropdownAppear 0.18s ease-out;
   cursor: default;
+  font-family: var(--font-inter);
 }
 
 @keyframes dropdownAppear {
@@ -464,6 +466,7 @@
   height: 440px;
   background: rgb(18, 18, 30);
   border-radius: 16px;
+  font-family: var(--font-inter);
 }
 .CloseBlock {
   display: flex;

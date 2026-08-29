@@ -27,6 +27,7 @@
   padding: 15px;
   display: flex;
   justify-content: space-between;
+  font-family: var(--font-inter);
 }
 .many {
   display: flex;
@@ -84,12 +85,14 @@
   font-weight: 600;
   font-size: 17.6px;
 }
-.Try{
+.Try {
   display: flex;
   color: rgb(107, 104, 144);
   font-size: 14px;
+  font-family: var(--font-inter);
 }
-.Clearr{
+
+.Clearr {
   display: flex;
   color: rgb(168, 85, 247);
   margin-top: 8px;
@@ -98,10 +101,10 @@
   border: 1px solid rgba(168, 85, 247, 0.3);
   border-radius: 10px;
   transition: all 0.2s ease-out;
-  &:hover{
+  font-family: var(--font-inter);
+  &:hover {
     border: 1px solid rgba(168, 85, 247, 0.6);
     background-color: rgba(168, 85, 247, 0.12);
-    
   }
 }
 .im{
