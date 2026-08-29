@@ -4,8 +4,8 @@ import type { Product } from '@/types/Card'
 
 interface WishList {
   Wish: Product[]
-  AddWish: (product: Product) => void
-  RemoveWish: (id: string) => void
+  addItem: (product: Product) => void
+  removeItem: (id: string) => void
   toggleWish: (product: Product) => void
   isInWishlist: (id: string) => boolean
 }
@@ -14,11 +14,11 @@ export const useWishListStore = create<WishList>()(
   persist(
     (set, get) => ({
       Wish: [],
-      AddWish: (product) =>
+      addItem: (product) =>
         set((state) => ({
           Wish: [...state.Wish, product],
         })),
-      RemoveWish: (id) =>
+      removeItem: (id) =>
         set((state) => ({
           Wish: state.Wish.filter((Wish) => Wish.id !== id),
         })),

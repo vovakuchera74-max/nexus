@@ -10,7 +10,7 @@ const inter = Inter({
   weight: ['400', '500'],
 })
 export default function WishCard({ wish }: { wish: Product }) {
-  const removeWish = useWishListStore((state) => state.RemoveWish)
+  const removeWish = useWishListStore((state) => state.removeItem)
   const Add = useCartStore((state) => state.addItem)
 
   return (
