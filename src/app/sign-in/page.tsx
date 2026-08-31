@@ -90,66 +90,74 @@ const onSubmit = async (data: signInValue) => {
           <div className={s.Words}>or with email</div>
           <div className={s.Line}></div>
         </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className={s.AuthBlockBottom}
-        >
-          <div className={s.OptiBlock}>
-            <div className={s.Optiname}>Email</div>
-            <label
-              className={errors.password ? s.OptiwritenError : s.Optiwriten}
-            >
-              <Mail className={s.OptiImg} size={16} />
-              <input
-                {...register('email')}
-                className={s.OptiInput}
-                type="email"
-                placeholder="User@nexusgg.com"
-              />
-            </label>
-            {errors.email && (
-              <span className={s.errorText}>{errors.email.message}</span>
-            )}
-          </div>
-          <div className={s.OptiBlock}>
-            <div className={s.Optiname}>Password</div>
-            <label
-              className={errors.password ? s.OptiwritenError : s.Optiwriten}
-            >
-              <IoLockClosedOutline className={s.OptiImg} size={16} />
-              <input
-                {...register('password')}
-                className={s.OptiInput}
-                type={EyeOpen ? 'text' : 'password'}
-                placeholder="Min. 8 characters"
-              />
-              <button
-                type="button"
-                className={s.EyeRepet}
-                onClick={() => setEyeOpen(!EyeOpen)}
-              >
-                {EyeOpen ? <EyeOff size={17} /> : <Eye size={17} />}
-              </button>
-            </label>
-            {errors.password && (
-              <span className={s.errorText}>{errors.password.message}</span>
-            )}
-          </div>
-          {authError && (
-  <div className={s.authError}>
-    <CircleAlert size={16} />
-    {authError}
+       <form onSubmit={handleSubmit(onSubmit)} className={s.AuthBlockBottom}>
+  <div className={s.OptiBlock}>
+    <label htmlFor="email" className={s.Optiname}>Email</label>
+    <label
+      className={errors.email ? s.OptiwritenError : s.Optiwriten}
+    >
+      <Mail className={s.OptiImg} size={16} />
+      <input
+        {...register('email')}
+        id="email"
+        className={s.OptiInput}
+        type="email"
+        placeholder="User@nexusgg.com"
+        aria-describedby={errors.email ? 'email-error' : undefined}
+      />
+    </label>
+    {errors.email && (
+      <span id="email-error" className={s.errorText} role="alert">
+        {errors.email.message}
+      </span>
+    )}
   </div>
-)}
-          <button className={s.Regbtn} disabled={isSubmitting}>
-            <div className={s.RegbtnText}>
-               {isSubmitting ? 'Signing in...' : 'Sign In'}
-            </div>
-            <div className={s.ArrowFor}>
-              <ArrowRight className={s.abc} size={16} />
-            </div>
-          </button>
-        </form>
+
+  <div className={s.OptiBlock}>
+    <label htmlFor="password" className={s.Optiname}>Password</label>
+    <label
+      className={errors.password ? s.OptiwritenError : s.Optiwriten}
+    >
+      <IoLockClosedOutline className={s.OptiImg} size={16} />
+      <input
+        {...register('password')}
+        id="password"
+        className={s.OptiInput}
+        type={EyeOpen ? 'text' : 'password'}
+        placeholder="Min. 8 characters"
+        aria-describedby={errors.password ? 'password-error' : undefined}
+      />
+      <button
+        type="button"
+        className={s.EyeRepet}
+        onClick={() => setEyeOpen(!EyeOpen)}
+        aria-label={EyeOpen ? 'Hide password' : 'Show password'}
+      >
+        {EyeOpen ? <EyeOff size={17} /> : <Eye size={17} />}
+      </button>
+    </label>
+    {errors.password && (
+      <span id="password-error" className={s.errorText} role="alert">
+        {errors.password.message}
+      </span>
+    )}
+  </div>
+
+  {authError && (
+    <div className={s.authError} role="alert">
+      <CircleAlert size={16} />
+      {authError}
+    </div>
+  )}
+  <button className={s.Regbtn} disabled={isSubmitting}>
+    <div className={s.RegbtnText}>
+      {isSubmitting ? 'Signing in...' : 'Sign In'}
+    </div>
+    <div className={s.ArrowFor}>
+      <ArrowRight className={s.abc} size={16} />
+    </div>
+  </button>
+</form>
         <div className={s.ConfirmOpt}>
           By signing in you agree to<span className={s.someText1}>Terms</span>{' '}
           and <span className={s.someText2}>Privacy Policy</span>

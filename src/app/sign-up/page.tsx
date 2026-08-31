@@ -105,7 +105,7 @@ const onSubmit = async (data: signUpValue) => {
           className={s.AuthBlockBottom}
         >
           <div className={s.OptiBlock}>
-            <div className={s.Optiname}>Username</div>
+            <label  htmlFor="username" className={s.Optiname}>Username</label>
             <label
               className={errors.username ? s.OptiwritenError : s.Optiwriten}
             >
@@ -115,14 +115,16 @@ const onSubmit = async (data: signUpValue) => {
                 className={s.OptiInput}
                 type="text"
                 placeholder="YourName"
+                id='username'
+                aria-describedby={errors.username ? 'username-error' : undefined}
               />
             </label>
             {errors.username && (
-              <span className={s.errorText}>{errors.username.message}</span>
+              <span id="username-error" role='alert' className={s.errorText}>{errors.username.message}</span>
             )}
           </div>
           <div className={s.OptiBlock}>
-            <div className={s.Optiname}>Email</div>
+            <label htmlFor='email' className={s.Optiname}>Email</label>
             <label className={errors.email ? s.OptiwritenError : s.Optiwriten}>
               <Mail className={s.OptiImg} size={16} />
               <input
@@ -130,14 +132,16 @@ const onSubmit = async (data: signUpValue) => {
                 className={s.OptiInput}
                 type="email"
                 placeholder="User@nexusgg.com"
+                id='email'
+                aria-describedby={errors.email ? 'email-error' : undefined}
               />
             </label>
             {errors.email && (
-              <span className={s.errorText}>{errors.email.message}</span>
+              <span role='alert' id='email-error' className={s.errorText}>{errors.email.message}</span>
             )}
           </div>
           <div className={s.OptiBlock}>
-            <div className={s.Optiname}>Password</div>
+            <label htmlFor='password' className={s.Optiname}>Password</label>
             <label
               className={errors.password ? s.OptiwritenError : s.Optiwriten}
             >
@@ -147,21 +151,24 @@ const onSubmit = async (data: signUpValue) => {
                 className={s.OptiInput}
                 type={EyeOpen ? 'text' : 'password'}
                 placeholder="Min. 8 characters"
+                id='password'
+                aria-describedby={errors.password ? "password-error" :undefined}
               />
               <button
                 className={s.EyeRepet}
                 type="button"
                 onClick={() => setEyeOpen(!EyeOpen)}
+                aria-label={EyeOpen ? 'Hide password' : 'Show password'}
               >
                 {EyeOpen ? <EyeOff size={17} /> : <Eye size={17} />}
               </button>
             </label>
             {errors.password && (
-              <span className={s.errorText}>{errors.password.message}</span>
+              <span role='alert' id='password-error' className={s.errorText}>{errors.password.message}</span>
             )}
           </div>
           <div className={s.OptiBlock}>
-            <div className={s.Optiname}>Confirm Password</div>
+            <label htmlFor='confirmpassword' className={s.Optiname}>Confirm Password</label>
             <label
               className={
                 errors.confirmPassword ? s.OptiwritenError : s.Optiwriten
@@ -173,43 +180,50 @@ const onSubmit = async (data: signUpValue) => {
                 className={s.OptiInput}
                 type={EyeOpenRep ? 'text' : 'password'}
                 placeholder="Repeat your password"
+                id='confirmpassword'
+                aria-describedby={errors.confirmPassword ? "confirmpassword-error" : undefined}
               />
               <button
                 className={s.EyeRepet}
                 type="button"
                 onClick={() => setEyeOpenRep(!EyeOpenRep)}
+                aria-label={EyeOpenRep ? 'Hide confirm password' : 'Show confirm password'}
               >
                 {EyeOpenRep ? <EyeOff size={17} /> : <Eye size={17} />}
               </button>
             </label>
             {errors.confirmPassword && (
-              <span className={s.errorText}>
+              <span className={s.errorText} id='confirmpassword-error' role='alert'>
                 {errors.confirmPassword.message}
               </span>
             )}
           </div>
-          <label className={s.checkboxLabel}>
-            <input
-              {...register('terms')}
-              type="checkbox"
-              className={s.checkboxInput}
-            />
-            <span className={s.checkboxCustom}></span>
-            <span className={s.checkboxText}>
-              I agree to the{' '}
-              <span className={s.someText1}>Terms of Service</span>and
-              <span className={s.someText2}>Privacy Policy</span>
-            </span>
-          </label>
-          {errors.terms && (
-            <span className={s.errorText}>{errors.terms.message}</span>
-          )}
-                    {authError && (
-  <div className={s.authError}>
+<label className={s.checkboxLabel}>
+  <input
+    {...register('terms')}
+    type="checkbox"
+    className={s.checkboxInput}
+    aria-describedby={errors.terms ? 'terms-error' : undefined}
+  />
+  <span className={s.checkboxCustom}></span>
+  <span className={s.checkboxText}>
+    I agree to the{' '}
+    <span className={s.someText1}>Terms of Service</span>and
+    <span className={s.someText2}>Privacy Policy</span>
+  </span>
+</label>
+{errors.terms && (
+  <span id="terms-error" role="alert" className={s.errorText}>
+    {errors.terms.message}
+  </span>
+)}
+{authError && (
+  <div className={s.authError} role="alert">
     <CircleAlert size={16} />
     {authError}
   </div>
 )}
+
           <button className={s.Regbtn} disabled={isSubmitting}>
             <div className={s.RegbtnText}>
               {isSubmitting ? "Signing up..." : "Create Account"}
