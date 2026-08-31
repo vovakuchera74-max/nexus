@@ -303,6 +303,7 @@
   gap: 5px;
   color: rgb(255, 255, 255);
   box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 20px 0px;
+  
   transition:
     transform 0.15s ease,
     filter 0.15s ease,
@@ -315,6 +316,10 @@
   &:active {
     transform: scale(0.97);
     filter: brightness(0.95);
+  }
+   &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 }
 .RegbtnText {

@@ -35,7 +35,7 @@ const handleGitHub = async () => {
   const {
     register,
     handleSubmit,
-    formState: { errors},
+    formState: { errors,isSubmitting},
   } = useForm<signUpValue>({
     mode: 'onTouched',
     resolver: zodResolver(signUp),
@@ -210,8 +210,10 @@ const onSubmit = async (data: signUpValue) => {
     {authError}
   </div>
 )}
-          <button className={s.Regbtn}>
-            <div className={s.RegbtnText}>Create Account</div>
+          <button className={s.Regbtn} disabled={isSubmitting}>
+            <div className={s.RegbtnText}>
+              {isSubmitting ? "Signing up..." : "Create Account"}
+            </div>
             <div className={s.ArrowFor}>
               <ArrowRight size={17} />
             </div>

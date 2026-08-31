@@ -36,7 +36,7 @@ const handleGitHub = async () => {
   const {
     register,
     handleSubmit,
-    formState: { errors},
+    formState: { errors,isSubmitting},
   } = useForm<signInValue>({
     mode: 'onTouched',
     resolver: zodResolver(signIn),
@@ -141,8 +141,10 @@ const onSubmit = async (data: signInValue) => {
     {authError}
   </div>
 )}
-          <button className={s.Regbtn}>
-            <div className={s.RegbtnText}>Sign In</div>
+          <button className={s.Regbtn} disabled={isSubmitting}>
+            <div className={s.RegbtnText}>
+               {isSubmitting ? 'Signing in...' : 'Sign In'}
+            </div>
             <div className={s.ArrowFor}>
               <ArrowRight className={s.abc} size={16} />
             </div>
