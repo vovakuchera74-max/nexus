@@ -150,6 +150,11 @@
     box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 20px 0px;
     opacity: 0.9;
   }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
   cursor: pointer;
 }
 .main {

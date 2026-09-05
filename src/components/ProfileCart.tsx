@@ -81,9 +81,9 @@ export default function HeaderActions({ user }: { user: User | null }) {
                       ${getTotalPrice().toFixed(2)}
                     </div>
                   </div>
-                  <button className={s.order}>
-                    Checkout - ${getTotalPrice().toFixed(2)}
-                  </button>
+                  <button className={s.order} disabled title="Checkout is coming soon">
+  Checkout - ${getTotalPrice().toFixed(2)} (Coming soon)
+</button>
                 </div>
               </>
             )}
