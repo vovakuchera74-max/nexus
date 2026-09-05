@@ -115,12 +115,12 @@ export default function Sidebar({
           <div className={s.filterword}>FILTERS</div>
         </div>
         {hasFilters && (
-          <div
+          <button
             className={s.resetALL}
             onClick={() => resetFilters()}
           >
             Reset all
-          </div>
+          </button>
         )}
       </div>
       <div className={s.CategoryFilter}>

@@ -13,12 +13,12 @@ export default function Error({ reset }: { reset: () => void }) {
         <h1 className={s.glitch}>500</h1>
         <div className={s.ServerWords}>Oops, The server crashed.</div>
         <div className={s.ReloadWords}>Please reload the page.</div>
-        <div className={s.Reloadbtn} onClick={reset}>
+        <button className={s.Reloadbtn} onClick={reset}>
           <span className={s.ReloadImg}>
             <RotateCcw size={21}></RotateCcw>
           </span>
           <span className={s.ReloadWord}>Reload</span>
-        </div>
+        </button>
       </div>
     </div>
     

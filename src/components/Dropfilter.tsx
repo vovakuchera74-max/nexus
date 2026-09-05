@@ -23,12 +23,12 @@ export default function Dropfilter({
 
   return (
     <>
-      <div onClick={() => open()} className={s.btnFilter}>
+      <button onClick={() => open()} className={s.btnFilter}>
         <SlidersHorizontal size={13} />
-      </div>
+      </button>
       {isOpen && (
         <div className={s.FilterWraper}>
-          <div className={s.Overlay} onClick={() => close()}></div>
+          <button className={s.Overlay} onClick={() => close()}></button>
           <Sidebar
             size={true}
             product={product}

@@ -36,7 +36,7 @@ export function SearchInput() {
           onChange={(e) => setSearchValue(e.target.value)}
         />
       </div>
-      <div className={s.searchMini} onClick={() => setIsSearchOpen(true)}>
+      <button className={s.searchMini} onClick={() => setIsSearchOpen(true)}>
         <span className={s.iconWrapper}>
           <Search size={19} />
         </span>
@@ -47,21 +47,21 @@ export function SearchInput() {
           onChange={(e) => setSearchValue(e.target.value)}
           readOnly
         />
-      </div>
+      </button>
       {IsSearchOpen && (
         <div className={s.Full}>
-          <div
+          <button
             className={s.OverlayForSearch}
             onClick={() => setIsSearchOpen(false)}
-          ></div>
+          ></button>
           <div className={s.SearchFullHeader}>
             <div className={s.inputWrapper}>
-              <div
+              <button
                 className={s.ArrowIcon}
                 onClick={() => setIsSearchOpen(false)}
               >
                 <ArrowLeft size={22} />
-              </div>
+              </button>
               <input
                 autoFocus
                 type="text"

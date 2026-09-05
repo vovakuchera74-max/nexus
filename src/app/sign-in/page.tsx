@@ -78,12 +78,12 @@ const onSubmit = async (data: signInValue) => {
           </Link>
         </div>
         <div className={s.AuthChoice}>
-          <div className={s.GitBlock} onClick={handleGitHub}>
+          <button className={s.GitBlock} onClick={handleGitHub}>
             <div className={s.GitImg}>
               <FiGithub size={16} />
             </div>
             <div className={s.GitWords}>GitHub</div>
-          </div>
+          </button>
         </div>
         <div className={s.AuthBorder}>
           <div className={s.Line}></div>

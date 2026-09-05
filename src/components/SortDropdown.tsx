@@ -28,7 +28,7 @@ export default function SortDropdown() {
 
   return (
     <div className={s.SortDropdown}>
-      <div
+      <button
         onClick={() => setIsOpenSort(!isOpenSort)}
         className={`${s.trigger} ${isOpenSort ? s.triggerOpen : ''}`}
       >
@@ -43,18 +43,18 @@ export default function SortDropdown() {
             <ChevronDown size={14} className={s.updown} />
           )}
         </div>
-      </div>
+      </button>
 
       {isOpenSort && (
         <div className={s.sortlible}>
           {options.map((option) => (
-            <div
+            <button
               key={option.value}
               className={`${s.option} ${currentSort === option.value ? s.active : ''}`}
               onClick={() => handleSelect(option.value)}
             >
               {option.label}
-            </div>
+            </button>
           ))}
         </div>
       )}
