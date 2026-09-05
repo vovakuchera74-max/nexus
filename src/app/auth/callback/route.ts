@@ -5,7 +5,6 @@ import { cookies } from 'next/headers'
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
-  console.log('code:', code)
 
   if (code) {
     const cookieStore = await cookies()
@@ -25,8 +24,16 @@ export async function GET(request: Request) {
         },
       }
     )
-    await supabase.auth.exchangeCodeForSession(code)
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+
+    if (error) {
+      return NextResponse.redirect(
+        `${origin}/sign-in`
+      )
+    }
+
+    return NextResponse.redirect(`${origin}/`)
   }
 
-  return NextResponse.redirect(`${origin}/`)
+  return NextResponse.redirect(`${origin}/sign-in?error=oauth_failed`)
 }

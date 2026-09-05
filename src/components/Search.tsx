@@ -14,14 +14,20 @@ export function SearchInput() {
   const [IsSearchOpen, setIsSearchOpen] = useState(false)
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString())
-    if (debouncedValue) {
-      params.set('search', debouncedValue)
-    } else {
-      params.delete('search')
-    }
-    router.push(`?${params.toString()}`)
-  }, [debouncedValue])
+  const currentParams = searchParams.toString()
+  const params = new URLSearchParams(currentParams)
+
+  if (debouncedValue) {
+    params.set('search', debouncedValue)
+  } else {
+    params.delete('search')
+  }
+
+  const nextParams = params.toString()
+  if (nextParams === currentParams) return
+
+  router.replace(`?${nextParams}`)
+}, [debouncedValue, searchParams, router])
 
   return (
     <>
