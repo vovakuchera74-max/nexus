@@ -7,7 +7,7 @@ import { createClient } from '@/lib/supabase-browser'
 import { useRouter } from 'next/navigation'
 import AvatarUpload from './AvatarUpload'
 import s from '../styles/Profile.module.scss'
-
+import { useModalA11y } from '@/hooks/useModalA11y'
 export default function SettingsModal({
   user,
   isOpen,
@@ -19,6 +19,7 @@ export default function SettingsModal({
 }) {
   const router = useRouter()
   const [newEmail, setNewEmail] = useState('')
+  const modalRef = useModalA11y(isOpen, onClose)
   const [newPassword, setNewPassword] = useState('')
   const [newNick, setNewNick] = useState('')
   const [isNickFocused, setIsNickFocused] = useState(false)
@@ -64,9 +65,15 @@ export default function SettingsModal({
   return (
     <div className={s.FullScrin}>
       <div className={s.Overlay3} onClick={onClose}></div>
-      <div className={s.SettingsBlock}>
+      <div 
+          ref={modalRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="settings-title" 
+          className={s.SettingsBlock}
+          >
         <div className={s.CloseBlock}>
-          <div className={s.AccountSettings}>Account Settings</div>
+          <div id="settings-title" className={s.AccountSettings}>Account Settings</div>
           <button type="button" className={s.Xbtn2} onClick={onClose}>
             <X size={20}></X>
           </button>

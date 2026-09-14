@@ -9,11 +9,14 @@ import { useCartStore } from '@/store/CartStore'
 import { useWishListStore } from '@/store/WishlistStore'
 import WishCard from './WishCard'
 import { User } from '@supabase/supabase-js'
+import { useModalA11y } from '@/hooks/useModalA11y'
 
 export default function HeaderActions({ user }: { user: User | null }) {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isWishOpen, setIsWishOpen] = useState(false)
+  const cartModalRef = useModalA11y(isCartOpen, () => setIsCartOpen(false))
+const wishModalRef = useModalA11y(isWishOpen, () => setIsWishOpen(false))
   const items = useCartStore((state) => state.items)
   const wish = useWishListStore((state) => state.Wish)
   const getTotalPrice = useCartStore((state) => state.getTotalPrice)
@@ -51,11 +54,17 @@ export default function HeaderActions({ user }: { user: User | null }) {
       {isCartOpen && (
         <div className={s.cartWrapper}>
           <div className={s.Overlay} onClick={() => setIsCartOpen(false)}></div>
-          <div className={s.CardPanel}>
+          <div
+  ref={cartModalRef}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cart-title"
+  className={s.CardPanel}
+>
             <div className={s.top}>
               <div className={s.block}>
                 <ShoppingCart className={s.img} size={22}></ShoppingCart>
-                <span className={s.CartTop}>Cart ({getTotalCount()})</span>
+                <span id="cart-title" className={s.CartTop}>Cart ({getTotalCount()})</span>
               </div>
               <button className={s.Xbtn} onClick={() => setIsCartOpen(false)}>
                 <X size={20}></X>
@@ -94,11 +103,17 @@ export default function HeaderActions({ user }: { user: User | null }) {
       {isWishOpen && (
         <div className={s.cartWrapper}>
           <div className={s.Overlay} onClick={() => setIsWishOpen(false)}></div>
-          <div className={s.CardPanel}>
+          <div
+  ref={wishModalRef}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="wishlist-title"
+  className={s.CardPanel}
+>
             <div className={s.top}>
               <div className={s.block}>
                 <Heart className={s.img} size={24}></Heart>
-                <span className={s.CartTop}>WishList ({wish.length})</span>
+                <span id="wishlist-title" className={s.CartTop}>WishList ({wish.length})</span>
               </div>
               <button className={s.Xbtn} onClick={() => setIsWishOpen(false)}>
                 <X size={20}></X>

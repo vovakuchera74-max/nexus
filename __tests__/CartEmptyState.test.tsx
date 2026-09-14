@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import HeaderActions from '@/components/ProfileCart'
 import { useCartStore } from '@/store/CartStore'
 
@@ -14,7 +14,7 @@ describe('Cart empty state', () => {
   it('shows "Your cart is empty" when the cart has no items', () => {
     render(<HeaderActions user={null} />)
 
-    screen.getByText('Cart').click()
+    fireEvent.click(screen.getByText('Cart'))
 
     expect(screen.getByText('Your cart is empty')).toBeInTheDocument()
   })

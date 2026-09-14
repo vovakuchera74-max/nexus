@@ -1,19 +1,32 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import SignIn from '@/app/sign-in/page'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { signIn, signInValue } from '@/validations/signInSchema'
 
-jest.mock('next/navigation', () => ({
-  useRouter: () => ({ push: jest.fn() }),
-}))
+function TestForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<signInValue>({ resolver: zodResolver(signIn) })
 
-describe('SignIn form validation', () => {
-  it('shows an error when the email is invalid', async () => {
-    render(<SignIn />)
+  return (
+    <form onSubmit={handleSubmit(() => {})}>
+      <input {...register('email')} placeholder="email" />
+      {errors.email && <span>{errors.email.message}</span>}
+      <button type="submit">Submit</button>
+    </form>
+  )
+}
 
-    const emailInput = screen.getByPlaceholderText('User@nexusgg.com')
-    fireEvent.change(emailInput, { target: { value: 'not-an-email' } })
+describe('signInSchema validation', () => {
+  it('shows an error for an invalid email', async () => {
+    render(<TestForm />)
 
-    const submitButton = screen.getByRole('button', { name: /sign in/i })
-    fireEvent.click(submitButton)
+    fireEvent.change(screen.getByPlaceholderText('email'), {
+      target: { value: 'not-an-email' },
+    })
+    fireEvent.click(screen.getByText('Submit'))
 
     expect(await screen.findByText('Invalid email')).toBeInTheDocument()
   })

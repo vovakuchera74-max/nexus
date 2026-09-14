@@ -18,8 +18,8 @@ A full-featured gaming e-commerce store built with Next.js 16, Supabase, and Typ
 
 - 🛍️ **Product Catalog** — grid and list view, with filtering by category, brand, price range, and stock
 - 🔍 **Search** — debounced real-time search across all products
-- 🛒 **Cart** — add/remove items, quantity control, subtotal — persisted in Zustand
-- ❤️ **Wishlist** — save favorite items, with toggle and badge count
+- 🛒 **Cart** — add/remove items, quantity control, subtotal — persisted locally (per device/browser)
+- ❤️ **Wishlist** — save favorite items, with toggle and badge count — persisted locally (per device/browser)
 - 🔐 **Authentication** — email/password sign up & sign in, GitHub OAuth
 - 👤 **Profile** — update username, email, and password from a settings modal
 - 🎨 **Dark UI** — custom dark purple palette with hover effects and animations
@@ -84,6 +84,12 @@ User profile data (username, avatar) is stored in Supabase Auth's `user_metadata
 ### 4. Storage (avatars)
 
 Create a public bucket named `avatars` in Storage for profile pictures.
+
+### 5. Cart & Wishlist sync
+
+Cart and wishlist data currently lives only in `localStorage` via Zustand's `persist` middleware — it is **not** synced to a user's account. This means the cart/wishlist is tied to a specific browser/device, not the logged-in user: if you sign in on a different device, you won't see the same cart.
+
+This is a known, intentional limitation for now. Syncing to a Supabase table (with RLS scoped to `user_id`, and merge logic on login) is planned but not yet implemented.
 
 ### Run locally
 
