@@ -1,6 +1,8 @@
 'use client'
 import s from '../styles/Profile.module.scss'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import {syncCartToAccount,syncWishlistToAccount} from "../lib/syncGuestData"
+import {createClient} from '../lib/supabase-browser'
 import SettingsModal from './SettingsModal'
 import ProfileDropdown from './ProfileDropdown'
 import { ShoppingCart, X, Heart } from 'lucide-react'
@@ -22,6 +24,19 @@ const wishModalRef = useModalA11y(isWishOpen, () => setIsWishOpen(false))
   const getTotalPrice = useCartStore((state) => state.getTotalPrice)
   const getTotalCount = useCartStore((state) => state.getTotalCount)
   const hasHydrated = useCartStore((state) => state.hasHydrated)
+  useEffect(() => {
+  if (!user) return
+
+  const supabase = createClient()
+  syncCartToAccount(supabase, user.id, items)
+}, [items, user])
+
+useEffect(() => {
+  if (!user) return
+
+  const supabase = createClient()
+  syncWishlistToAccount(supabase, user.id, wish)
+}, [wish, user])
 
   return (
     <>

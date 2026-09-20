@@ -14,7 +14,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn, signInValue } from '../../validations/signInSchema'
 import { createClient } from '@/lib/supabase-browser'
 import { useRouter } from 'next/navigation'
-
+import { mergeCartOnLogin, mergeWishlistOnLogin } from '@/lib/syncGuestData'
+import { useCartStore } from '@/store/CartStore'
+import { useWishListStore } from '@/store/WishlistStore'
 
 export default function SignIn() {
 const handleGitHub = async () => {
@@ -44,7 +46,7 @@ const handleGitHub = async () => {
 const onSubmit = async (data: signInValue) => {
   setAuthError(null)
   const supabase = createClient()
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data: authData, error } = await supabase.auth.signInWithPassword({
     email: data.email,
     password: data.password,
   })
@@ -52,6 +54,16 @@ const onSubmit = async (data: signInValue) => {
     setAuthError('Incorrect email or password. Please try again.')
     return
   }
+
+  const localCart = useCartStore.getState().items
+  const localWish = useWishListStore.getState().Wish
+
+  const mergedCart = await mergeCartOnLogin(supabase, authData.user.id, localCart)
+  const mergedWish = await mergeWishlistOnLogin(supabase, authData.user.id, localWish)
+
+  useCartStore.setState({ items: mergedCart as any })
+  useWishListStore.setState({ Wish: mergedWish as any })
+
   router.push('/')
 }
 

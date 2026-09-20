@@ -4,34 +4,36 @@ A full-featured gaming e-commerce store built with Next.js 16, Supabase, and Typ
 
 ## 🔗 Demo
 
-> [Live Demo](https://nexus.vercel.app) · [GitHub](https://github.com/vovakuchera74-max/nexus)
+> [Live Demo](https://nexus-five-pied.vercel.app) · [GitHub](https://github.com/vovakuchera74-max/nexus)
 
 ---
 
 ## 📸 Screenshots
 
 ![Home](public/screenshots/home.png)
-![Catalog](public/screenshots/settings.png)
+![Settings](public/screenshots/settings.png)
 ---
 
 ## ✨ Features
 
 - 🛍️ **Product Catalog** — grid and list view, with filtering by category, brand, price range, and stock
 - 🔍 **Search** — debounced real-time search across all products
-- 🛒 **Cart** — add/remove items, quantity control, subtotal — persisted locally (per device/browser)
-- ❤️ **Wishlist** — save favorite items, with toggle and badge count — persisted locally (per device/browser)
+- 🛒 **Cart** — add/remove items, subtotal — synced to your account when signed in, with local persistence for guests
+- ❤️ **Wishlist** — save favorite items, with toggle and badge count — synced to your account when signed in, with local persistence for guests
 - 🔐 **Authentication** — email/password sign up & sign in, GitHub OAuth
-- 👤 **Profile** — update username, email, and password from a settings modal
+- 👤 **Profile** — update username, email, password, and avatar from a settings modal
+- ♿ **Accessible modals** — Escape to close, focus trap, and focus return on all dialogs
 - 🎨 **Dark UI** — custom dark purple palette with hover effects and animations
 - 📱 Responsive — desktop-first layout with slide-in filter drawer on mobile
 - ⚙️ **Skeleton & Error pages** — loading states and error boundaries
+- 🧪 **Tested** — unit and component tests for stores, hooks, and form validation
 
 ---
 
 ## 🛠️ Tech Stack
 
 | Category   | Technology                   |
-| ---------- | ---------------------------- |
+| ---------- | ----------------------------- |
 | Framework  | Next.js 16 (App Router)      |
 | Language   | TypeScript                   |
 | Styling    | SCSS Modules                 |
@@ -65,6 +67,7 @@ Create a `.env.local` file in the root:
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 ```
+
 ## 🗄️ Database Setup
 
 This project uses Supabase (PostgreSQL). To set up your own instance:
@@ -87,9 +90,22 @@ Create a public bucket named `avatars` in Storage for profile pictures.
 
 ### 5. Cart & Wishlist sync
 
-Cart and wishlist data currently lives only in `localStorage` via Zustand's `persist` middleware — it is **not** synced to a user's account. This means the cart/wishlist is tied to a specific browser/device, not the logged-in user: if you sign in on a different device, you won't see the same cart.
+Cart and wishlist are stored locally (`localStorage`, via Zustand's `persist` middleware) for guests, and additionally synced to `cart_items`/`wishlist_items` tables in Supabase for signed-in users, with Row Level Security scoped to `auth.uid()`.
 
-This is a known, intentional limitation for now. Syncing to a Supabase table (with RLS scoped to `user_id`, and merge logic on login) is planned but not yet implemented.
+- On every cart/wishlist change while signed in, the current state is written to the database (`src/lib/syncGuestData.ts`).
+- On sign up or sign in, any items already in the browser's local storage are merged with what's already saved to the account (quantities are summed for the cart; the wishlist is de-duplicated by product), so items added as a guest aren't lost.
+
+This currently works for email/password sign up and sign in. GitHub OAuth sign-in does not yet trigger this merge, since its callback runs server-side and has no access to the browser's local storage — a client-side auth-state listener would be needed to extend it there.
+
+### 6. GitHub OAuth setup
+
+To enable "Sign in with GitHub":
+
+1. Create a new OAuth App at [github.com/settings/developers](https://github.com/settings/developers)
+2. Set the **Homepage URL** to your site's URL (e.g. `http://localhost:3000` for local dev, or your production domain)
+3. Set the **Authorization callback URL** to your Supabase callback, shown in Supabase Dashboard → Authentication → Providers → GitHub (looks like `https://<project-ref>.supabase.co/auth/v1/callback`)
+4. Copy the generated **Client ID** and **Client Secret** into Supabase Dashboard → Authentication → Providers → GitHub
+5. In Supabase Dashboard → Authentication → URL Configuration, add `<your-site-url>/auth/callback` to the **Redirect URLs** allow list (for both local and production URLs, if you use both)
 
 ### Run locally
 
@@ -114,6 +130,9 @@ src/
 ├── styles/           # SCSS Modules
 ├── types/            # TypeScript interfaces
 └── validations/      # Zod schemas
+middleware.ts      # Refreshes the Supabase session on every request  
+supabase/          # schema.sql and seed.sql for setting up the database
+tests/             # Jest + React Testing Library tests
 ```
 
 ---

@@ -14,7 +14,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { signUp, signUpValue } from '../../validations/signUpSchema'
 import { createClient } from '@/lib/supabase-browser'
 import { useRouter } from 'next/navigation'
-
+import { syncCartToAccount,syncWishlistToAccount } from '@/lib/syncGuestData'
+import { useCartStore } from '@/store/CartStore'
+import { useWishListStore } from '@/store/WishlistStore'
 
 export default function SignUp() {
 const handleGitHub = async () => {
@@ -61,6 +63,14 @@ const onSubmit = async (data: signUpValue) => {
     setAuthError('An account with this email already exists. Try signing in instead.')
     return
   }
+
+  if (authData.user) {
+  const cartItems = useCartStore.getState().items
+  const wishItems = useWishListStore.getState().Wish
+
+  await syncCartToAccount(supabase, authData.user.id, cartItems)
+  await syncWishlistToAccount(supabase, authData.user.id, wishItems)
+}
 
   router.push('/')
 }

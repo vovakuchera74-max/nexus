@@ -40,3 +40,33 @@ create policy "Public can view products"
   on public.products for select
   to public
   using (true);
+
+create table public.cart_items (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references auth.users(id) not null,
+  product_id uuid references public.products(id) not null,
+  quantity int not null default 1,
+  created_at timestamp with time zone default now(),
+  unique (user_id, product_id)
+);
+
+create table public.wishlist_items (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references auth.users(id) not null,
+  product_id uuid references public.products(id) not null,
+  created_at timestamp with time zone default now(),
+  unique (user_id, product_id)
+);
+
+alter table public.cart_items enable row level security;
+alter table public.wishlist_items enable row level security;
+
+create policy "Users manage their own cart items"
+  on public.cart_items for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
+
+create policy "Users manage their own wishlist items"
+  on public.wishlist_items for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
