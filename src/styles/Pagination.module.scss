@@ -1,0 +1,91 @@
+.PaginationBar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    gap: 8px;
+}
+.PaginationBack{
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid rgba(168, 85, 247, 0.2);
+border-radius: 10px;
+color: rgb(196, 184, 240);
+background-color: rgba(0, 0, 0, 0);
+font-size: 14px;
+font-weight: 600;
+width: 36px;
+height: 36px;
+transition: all 0.2s ease-out;
+&:hover{
+    background-color: rgba(168, 85, 247, 0.12);
+border-bottom-color: rgba(168, 85, 247, 0.4);
+}
+&:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0);
+      border-bottom-color: rgba(168, 85, 247, 0.2);
+    }
+  }
+}
+.PaginationNumber{
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid rgba(168, 85, 247, 0.2);
+border-radius: 10px;
+color: rgb(196, 184, 240);
+background-color: rgba(0, 0, 0, 0);
+font-size: 14px;
+font-weight: 600;
+width: 36px;
+height: 36px;
+transition: all 0.2s ease-out;
+&:hover{
+    background-color: rgba(168, 85, 247, 0.12);
+border-bottom-color: rgba(168, 85, 247, 0.4);
+}
+}
+.PaginationNumberActive{
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid rgb(168, 85, 247);
+border-radius: 10px;
+color: rgb(255, 255, 255);
+background-color: rgb(168, 85, 247);
+font-size: 14px;
+font-weight: 600;
+width: 36px;
+height: 36px;
+box-shadow: rgba(168, 85, 247, 0.4) 0px 0px 12px 0px;
+}
+.PaginationNext{
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid rgba(168, 85, 247, 0.2);
+border-radius: 10px;
+color: rgb(196, 184, 240);
+background-color: rgba(0, 0, 0, 0);
+font-size: 14px;
+font-weight: 600;
+width: 36px;
+height: 36px;
+transition: all 0.2s ease-out;
+&:hover{
+    background-color: rgba(168, 85, 247, 0.12);
+border-bottom-color: rgba(168, 85, 247, 0.4);
+}
+&:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0);
+      border-bottom-color: rgba(168, 85, 247, 0.2);
+    }
+  }
+}

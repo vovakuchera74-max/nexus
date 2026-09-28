@@ -8,7 +8,7 @@ import Dropfilter from '@/components/Dropfilter'
 import Header from '@/components/Header'
 import Link from 'next/link'
 import { SearchX } from 'lucide-react';
-
+import Pagination from "../components/Pagination"
 
 export default async function Home({
   searchParams,
@@ -21,6 +21,7 @@ export default async function Home({
     brand?: string
     maxPrice?: string
     inStock?: string
+    page?: string
   }>
 }) {
   const {
@@ -31,10 +32,11 @@ export default async function Home({
     brand,
     maxPrice,
     inStock,
+    page
   } = await searchParams
    const supabase = await createServerSupabase()
   const sort = sortParam || 'featured'
-  let query = supabase.from('products').select('*, categories(name)')
+  let query = supabase.from('products').select('*, categories(name)', { count: 'exact' })
   if (category) {
     const slugs = category.split(',')
     const { data: cats } = await supabase
@@ -71,8 +73,15 @@ export default async function Home({
   if (brand) {
     query = query.in('brand', brand.split(','))
   }
-const { data: products, error } = await query.returns<Product[]>()
+  const PAGE_SIZE = 4
+const pageParam = Number(page) || 1
+const from = (pageParam - 1) * PAGE_SIZE
+const to = from + PAGE_SIZE - 1
 
+  query = query.range(from, to)
+
+const { data: products, count, error } = await query.returns<Product[]>()
+const totalPages = count ? Math.ceil(count / PAGE_SIZE) : 1
 if (error) {
   throw new Error(error.message)
 }
@@ -143,6 +152,11 @@ if (!products || products.length === 0) {
                 <ProductCard key={product.id} product={product} view={view} priority={index < 6}/>
               ))}
             </div>
+            <Pagination 
+  currentPage={pageParam} 
+  totalPages={totalPages} 
+  searchParams={{sort,view,search,category,brand,maxPrice,inStock,page}} 
+/>
           </div>
         </div>
       </main>
