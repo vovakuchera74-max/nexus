@@ -1,3 +1,4 @@
+import Link from 'next/link' 
 import { Product } from '@/types/Card'
 import s from '../styles/ProductCard.module.scss'
 import Stars from './Stars'
@@ -19,25 +20,32 @@ export default function ProductCard({
   return (
     <div className={`${s.ProductCard} ${view === 'list' ? s.listCard : ''}`}>
       <div className={s.imgBlock}>
-        
-          <NewOrSale
-            isNew={product.is_new}
-            isSele={product.discount_percent}
-          ></NewOrSale>
-          <Fav product={product} />
-        
-        <Image fill src={product.image_url} alt={product.name} priority={priority} sizes="(max-width: 768px) 50vw, 25vw"
-  style={{ objectFit: 'cover' }}/>
-      </div>
+  <Link href={`/products/${product.slug}`} className={s.imgLink}>
+    <NewOrSale
+      isNew={product.is_new}
+      isSele={product.discount_percent}
+    />
+    <Image
+      fill
+      src={product.image_url}
+      alt={product.name}
+      priority={priority}
+      sizes="(max-width: 768px) 50vw, 25vw"
+      style={{ objectFit: 'cover' }}
+    />
+  </Link>
+
+  <Fav version={true} product={product} />
+</div>
       <div className={s.category}>
         <span className={s.brand}>{product.brand}</span>
         <span className={s.categoryName}>{product.categories?.name}</span>
       </div>
-      <div className={s.ItemName}>{product.name}</div>
+      <Link href={`/products/${product.slug}`} className={s.ItemName}>{product.name}</Link>
 
       <div className={s.raitingBlock}>
         <div className={s.stars}>
-          <Stars rating={product.rating}></Stars>
+          <Stars size={11} rating={product.rating}></Stars>
         </div>
         <div className={s.rating}>
           {product.rating} ({product.reviews_count.toLocaleString()})
@@ -52,7 +60,7 @@ export default function ProductCard({
           )}
         </div>
         <div className={s.btnBlock}>
-          <AddToCartButton product={product}></AddToCartButton>
+          <AddToCartButton version={true} product={product}></AddToCartButton>
         </div>
       </div>
     </div>

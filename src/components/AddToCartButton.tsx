@@ -5,7 +5,7 @@ import { useCartStore } from '@/store/CartStore'
 import type { Product } from '@/types/Card'
 import s from '../styles/ProductCard.module.scss'
 
-export default function AddToCartButton({ product }: { product: Product }) {
+export default function AddToCartButton({ product,version }: { product: Product,version:boolean }) {
   const addItem = useCartStore((state) => state.addItem)
   const [added, setAdded] = useState(false)
 
@@ -17,17 +17,17 @@ export default function AddToCartButton({ product }: { product: Product }) {
 
   return (
     <button
-      className={`${s.addBtn} ${added ? s.addedBtn : ''}`}
+      className={`${version ? s.addBtn : s.ADDbtn} ${added ? s.addedBtn : ''}`}
       onClick={handleAdd}
       disabled={added}
     >
       {added ? (
         <>
-          <Check size={16} /> Added!
+          <Check size={version ? 16 : 18} /> {version ? "Added!" : "Added to Cart!"} 
         </>
       ) : (
         <>
-          <ShoppingCart size={16} /> Add
+          <ShoppingCart size={version ? 16 : 18} />{version ? "Add" : "Add to Cart"} 
         </>
       )}
     </button>

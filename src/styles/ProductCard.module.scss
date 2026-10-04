@@ -128,6 +128,28 @@
   cursor: pointer;
   box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 12px 0px;
 }
+.ADDbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  flex: 1;
+  gap: 6px;
+  padding: 14px 0px;
+  background: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(
+    135deg,
+    rgb(168, 85, 247),
+    rgb(99, 102, 241)
+  );
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  border: rgba(168, 85, 247, 0.15) solid 1px;
+  cursor: pointer;
+  box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 12px 0px;
+}
 .btnBlock {
   display: flex;
   align-items: center;
@@ -137,4 +159,9 @@
   background-color: #22c55e;
   box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
   transition: all 0.3s ease;
+}
+.imgLink {
+  position: absolute;
+  inset: 0;
+  display: block;
 }

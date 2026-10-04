@@ -36,3 +36,34 @@
   border-radius: 50%;
   backdrop-filter: blur(4px);
 }
+.heartactivVersion{
+  display: flex;
+  background-color: rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: rgb(168, 85, 247);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  height: 56px;
+  width: 56px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+}
+.heartVersion{
+  display: flex;
+  background-color: rgb(18, 18, 30);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  color: rgb(107, 104, 144);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  height: 56px;
+  width: 56px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+}
+

@@ -70,3 +70,18 @@ create policy "Users manage their own wishlist items"
   on public.wishlist_items for all
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
+
+  create table public.product_specs (
+  id uuid primary key default gen_random_uuid(),
+  product_id uuid references public.products(id) on delete cascade not null,
+  label text not null,
+  value text not null,
+  sort_order int not null default 0
+);
+
+alter table public.product_specs enable row level security;
+
+create policy "Public can view product specs"
+  on public.product_specs for select
+  to public
+  using (true);
