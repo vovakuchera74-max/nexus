@@ -66,4 +66,13 @@
   border-radius: 14px;
   backdrop-filter: blur(4px);
 }
-
+  @media(max-width:450px){
+ .heartactivVersion{
+  height: 46px;
+  width: 46px;
+ }
+  .heartVersion{
+  height: 46px;
+  width: 46px;
+ }
+}

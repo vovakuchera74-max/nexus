@@ -150,6 +150,12 @@
   cursor: pointer;
   box-shadow: rgba(168, 85, 247, 0.35) 0px 0px 12px 0px;
 }
+  @media(max-width:450px){
+.ADDbtn{
+  
+  height: 46px;
+}
+}
 .btnBlock {
   display: flex;
   align-items: center;

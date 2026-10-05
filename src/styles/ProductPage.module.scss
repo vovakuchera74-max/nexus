@@ -462,3 +462,75 @@ margin-right: 5px;
   flex-direction: column;
   gap: 15px;
 }
+@media(max-width:920px){
+  .ContentBottom{
+    grid-template-columns: 1fr;
+  }
+}
+@media(max-width:850px){
+  .ContentMain{
+    grid-template-columns: 1fr;
+  }
+}
+@media(max-width:550px){
+  .ContentALlBlock{
+    padding: 26px 20px;
+  }
+  .CategoriesName{
+    font-size: 12px;
+  }
+  .Name1{
+    font-size: 12px;
+    width: 180px;
+  }
+  .btnBack{
+    font-size: 14px;
+  }
+  .ItemOptions{
+    font-size: 13px;
+  }
+  .ItemValue{
+    font-size: 13px;
+  }
+  .Block1{
+    padding: 16px;
+  }
+  .Block2{
+    padding: 16px;
+  }
+  .NameForMarc{
+    font-size: 25px;
+  }
+  .price{
+    font-size: 30px;
+    
+  }
+  .priceBlock{
+    padding: 10px;
+  }
+  .StockForMarc{
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+  .InStockForMarc{
+    gap: 4px;
+  }
+  .raitingBlock{
+    margin: 13px 0;
+  }
+}
+  @media(max-width:400px){
+  .ContentALlBlock{
+    padding: 26px 5px;
+  }
+.Name1{
+    width: 160px;
+}
+.ItemOptions{
+    font-size: 12px;
+  }
+  .ItemValue{
+    font-size: 12px;
+  }
+  
+}
